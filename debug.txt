@@ -1,0 +1,14 @@
+Array
+(
+    [codigo_apartado] => 5
+    [num_asiento] => 5
+    [estado_reserva] => ocupado
+    [id_usuario] => 4
+    [id_horario] => 21
+    [id_trayecto] => 5
+    [origen] => Oaxaca
+    [destino] => Santa Lucia
+    [fecha] => 2024-07-21
+    [hora_salida] => 09:00:00
+    [monto_pagar] => 100
+)
