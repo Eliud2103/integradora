@@ -91,8 +91,8 @@
 
     $numero_asientos = $row['asientos'] ?? 0;
 
-    $stmt = $conection->prepare("SELECT asiento_reservado FROM reservacion WHERE id_horario = ? AND estado_reserva = 'ocupado'");
-    $stmt->bind_param("i", $id_trayecto);
+    $stmt = $conection->prepare("SELECT asiento_reservado FROM reservacion WHERE id_horario = ? AND estado_reserva = 'ocupado' ");
+    $stmt->bind_param("i", $id_horario);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -100,6 +100,7 @@
     while ($row = $result->fetch_assoc()) {
         $asientos_ocupados[] = $row['asiento_reservado'];
     }
+
     $stmt->close();
 
 ?>
