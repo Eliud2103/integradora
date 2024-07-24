@@ -20,6 +20,15 @@
                 border-radius: 10px;
                 padding: 20px;
             }
+
+            .btn-primary{
+                background-color: #6DA0ED;
+                border-radius: 20px
+            }
+            .btn-danger{
+                background-color: #B6357B;
+                border-radius: 20px
+            }
         </style>
     </head>
 <body>
@@ -83,28 +92,27 @@
 
     <script>
         document.getElementById('formulario').onsubmit = function(event) {
-    event.preventDefault();
-    document.getElementById('spinner').style.display = 'inline-block'; // Muestra el spinner
-    
-    var formData = new FormData(this);
-    fetch('procesar_cambio_contrasena.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('spinner').style.display = 'none';
-        alert(data);
-        if (!data.includes('Error: ')) {
-            window.location.href = '../index.php';
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('spinner').style.display = 'none'; // Asegúrate de ocultar el spinner incluso si hay un error
-    });
-};
-
+            event.preventDefault();
+            document.getElementById('spinner').style.display = 'inline-block';
+            
+            var formData = new FormData(this);
+            fetch('procesar_cambio_contrasena.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('spinner').style.display = 'none';
+                alert(data);
+                if (!data.includes('Error: ')) {
+                    window.location.href = '../index.php';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('spinner').style.display = 'none';
+            });
+        };
     </script>
 </body>
 </html>

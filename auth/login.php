@@ -8,12 +8,22 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="../styles/style.css">
         <style>
             .bg-form {
                 background-color: #d6e1f7;
                 border-radius: 10px;
                 padding: 20px;
+            }
+
+            .btn-primary{
+                background-color: #6DA0ED;
+                border-radius: 20px
+            }
+            .btn-danger{
+                background-color: #B6357B;
+                border-radius: 20px
             }
         </style>
     </head>
@@ -71,16 +81,44 @@
                 })
                 .then(response => response.text())
                 .then(data => {
-                    // Evaluar la respuesta para ver si contiene un mensaje de éxito o error
                     if (data.includes('Error:')) {
-                        alert(data); // Mostrar alerta con el mensaje de error
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al iniciar sesión',
+                            text: data,
+                            confirmButtonText: 'Intentar de nuevo'
+                        });
                     } else {
-                        window.location.href = '../index.php'; // Redirigir al index si el inicio de sesión es exitoso
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Inicio de sesión exitoso',
+                            text: 'Redirigiendo al inicio.',
+                            confirmButtonText: 'Aceptar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '../index.php';
+                            }
+                        });
                     }
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error de comunicación',
+                        text: 'No se pudo establecer comunicación con el servidor.'
+                    });
+                });
             };
+            </script>
 
-        </script>
     </body>
+    <footer style="position: fixed; bottom: 0; width:100%; height: 45px;" class="mt-4">
+        <a href="https://www.facebook.com/autobuseshalconoficial?mibextid=ZbWKwL" target="_blank">
+            <img src="../assets/images/icon-facebook-480.png" width="30px" alt="">
+        </a>
+        <a href="https://www.instagram.com/autobuseshalcon_oax?igsh=ZThic29ra2pkcW85" target="_blank">
+            <img src="../assets/images/icon-instagram-480.png" width="30px" alt="">
+        </a>
+    </footer>
 </html>

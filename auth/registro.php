@@ -8,6 +8,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="../styles/style.css">
     </head>
     <style>
@@ -15,6 +16,15 @@
             background-color: #d6e1f7;
             border-radius: 10px;
             padding: 20px;
+        }
+
+        .btn-primary{
+            background-color: #6DA0ED;
+            border-radius: 20px
+        }
+        .btn-danger{
+            background-color: #B6357B;
+            border-radius: 20px
         }
     </style>
 
@@ -68,30 +78,49 @@
    <script>
         document.getElementById('formulario').onsubmit = function(event) {
             event.preventDefault();
-    
+
             var formData = new FormData(this);
-    
+
             fetch('procesar_registro.php', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.text())
             .then(data => {
-                document.getElementById('mensaje').innerHTML = data;
-                if (data.includes('Error: ')) {
-                    alert(data);
+                if (data.includes('Error:')) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: data,
+                    });
                 } else {
-                    alert('Se ha registrado el usuario exitosamente.');
-                    window.location.href = '../index.php';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registrado',
+                        text: 'Se ha registrado el usuario exitosamente.',
+                        confirmButtonText: 'Aceptar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '../index.php';
+                        }
+                    });
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de comunicación',
+                    text: 'No se pudo establecer comunicación con el servidor.'
+                });
+            });
         };
+
     </script>
 </body>
 
 <footer>
-<img src="img/icon-facebook-480.png" width="30px" alt="">
-<img src="img/icon-instagram-480.png" width="30px" alt="">
+<img src="../assets/images/icon-facebook-480.png" width="30px" alt="">
+<img src="../assets/images/icon-instagram-480.png" width="30px" alt="">
 </footer>
 </html>

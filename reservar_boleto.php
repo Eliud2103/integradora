@@ -75,7 +75,7 @@
                             <label class="price">Monto a pagar: $<?php echo htmlspecialchars($monto_pagar); ?> MX</label>
                         </div>
                         <a href="index.php">
-                            <button style="background-color: #B6357B; padding: 6px; width: 160px" class="mt-3 btn" type="button">Ir a inicio</button>
+                            <button style="background-color: #B6357B; padding: 6px; width: 160px" class="mt-3 mb-3 btn" type="button">Ir a inicio</button>
                         </a>
                     </div>
                 </div>
@@ -111,8 +111,16 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    alert(xhr.responseText);
-                    window.location.href = 'index.php';
+                    Swal.fire({
+                        title: 'Resultado de la operación',
+                        text: xhr.responseText,
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'index.php';
+                        }
+                    });
                 }
             };
             xhr.send("id_boleto=" + idBoleto);

@@ -135,18 +135,19 @@
             margin: 20px 0;
         }
         .seat {
+            position: relative;
             width: 40px;
             height: 40px;
+            display: inline-block;
             margin: 5px;
-            border-radius: 5px;
-            text-align: center;
-            line-height: 40px;
-            font-size: 14px;
-            cursor: pointer;
-            background-color: #e1e1e1;
-            border: 2px solid #ccc;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        .seat img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
         .seat.available {
             background-color: #e1e1e1;
         }
@@ -158,6 +159,16 @@
             background-color: #b0b0b0;
             cursor: not-allowed;
         }
+
+        .seat-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            pointer-events: none;
+        }
+
         .price,
         .buttons {
             display: flex;
@@ -172,19 +183,13 @@
             font-size: 1.2rem;
         }
         .btn-primary {
-            background-color: #2c3e50;
+            background-color: #465772;
             color: white;
-        }
-        .btn-primary:hover {
-            background-color: #1a252f;
         }
         .btn-danger {
-            background-color: #d9534f;
-            color: white;
+            background-color: #B6357B;
         }
-        .btn-danger:hover {
-            background-color: #c9302c;
-        }
+
     </style>
 </head>
 <body>
@@ -192,7 +197,7 @@
     <div class="container main-card">
         <h3 class="text-center">APARTADO DE BOLETOS</h3>
         <div class="row">
-            <div class="col-md-4 text-center">
+            <div class="col-md-2 text-center">
                 <img src="assets/images/autobus.png" alt="Autobús" class="bus-img">
                 <p>Autobús</p>
             </div>
@@ -202,12 +207,33 @@
                         <?php
                         for ($i = 0; $i < $numero_asientos; $i++) {
                             $estado = in_array($i + 1, $asientos_ocupados) ? 'occupied' : 'available';
-                            echo '<div class="seat ' . $estado . '" data-index="' . $i . '">' . str_pad($i + 1, 2, '0', STR_PAD_LEFT) . '</div>';
-                        }                        
+                            $src = ($estado == 'occupied') ? 'assets/images/ocupado.png' : 'assets/images/disponible.png';
+                            echo '<div class="seat ' . $estado . '" data-index="' . $i . '">';
+                            echo '<img src="' . $src . '" alt="Asiento">';
+                            echo '<div class="seat-number">' . ($i + 1) . '</div>';
+                            echo '</div>';
+                        }
                         ?>
                     </div>
 
-                    <div class="price" id="price">$0.00MX</div>
+                    <div class="row text-center mt-2">
+                        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                            <img src="assets/images/seleccionado.png" alt="Seleccionado" style="width: 40px; height: 40px; border-radius: 5px;">
+                            <p>Seleccionado</p>
+                        </div>
+                        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                            <img src="assets/images/ocupado.png" alt="Ocupado" style="width: 40px; height: 40px; border-radius: 5px;">
+                            <p>Ocupado</p>
+                        </div>
+                        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                            <img src="assets/images/disponible.png" alt="Disponible" style="width: 40px; height: 40px; border-radius: 5px;">
+                            <p>Disponible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="seat-container">
                     <div class="buttons">
                         <div id="bookingFormContainer" data-id-trayecto="<?php echo $id_trayecto; ?>">
                             <form id="bookingForm" action="apartar_boleto.php" method="POST">
@@ -222,10 +248,11 @@
                                 <input type="hidden" name="fecha" id="fecha" value="<?php echo $fecha; ?>">
                                 <input type="hidden" name="hora_salida" id="hora_salida" value="<?php echo $hora_salida; ?>">
                                 <input type="hidden" name="monto_pagar" id="monto_pagar" value="100">
-                                <button id="btn-apartar" class="btn btn-primary mb-3" type="submit">Apartar</button>
+                                <button id="btn-apartar" class="btn btn-primary mb-3 btn-lg" type="submit">Apartar</button>
                             </form>
                         </div>
-                        <button id="btn-cancelar" class="btn btn-danger" onclick="window.location.href='index.php'">Cancelar</button>
+                        <button id="btn-cancelar" class="btn btn-danger btn-lg" onclick="window.location.href='index.php'">Cancelar</button>
+                        <div class="price" id="price">$0.00MX</div>
                     </div>
                 </div>
             </div>
@@ -238,12 +265,20 @@
         let selectedSeats = [];
 
         document.querySelector('.seat-map').addEventListener('click', function(event) {
-            const seat = event.target;
-            if (seat.classList.contains('seat') && !seat.classList.contains('occupied')) {
-                seat.classList.toggle('selected');
-                const seatIndex = seat.getAttribute('data-index');
+            let seat = event.target;
 
-                if (seat.classList.contains('selected')) {
+            if (!seat.classList.contains('seat')) {
+                seat = seat.closest('.seat');
+            }
+            const img = seat.querySelector('img');
+
+            if (seat && img && !seat.classList.contains('occupied')) {
+                seat.classList.toggle('selected');
+                const isSelected = seat.classList.contains('selected');
+                img.src = isSelected ? 'assets/images/seleccionado.png' : 'assets/images/disponible.png';
+                
+                const seatIndex = seat.getAttribute('data-index');
+                if (isSelected) {
                     if (!selectedSeats.includes(seatIndex)) {
                         selectedSeats.push(seatIndex);
                     }
@@ -253,6 +288,8 @@
                 updatePrice();
             }
         });
+
+
 
         document.getElementById('btn-apartar').addEventListener('click', (event) => {
             event.preventDefault();

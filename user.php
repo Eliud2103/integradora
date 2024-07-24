@@ -36,6 +36,14 @@
             border-radius: 10px;
             padding: 20px;
         }
+        .btn-primary{
+            background-color: #6DA0ED;
+            border-radius: 20px
+        }
+        .btn-danger{
+            background-color: #B6357B;
+            border-radius: 20px
+        }
     </style>
 </head>
 <body>
@@ -56,10 +64,10 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <button class="btn btn-primary w-100 mt-3" type="submit" name="cambio_contraseña">Cambiar contraseña</button>
+                            <button class="btn btn-primary w-100 mt-3"type="submit" name="cambio_contraseña">Cambiar contraseña</button>
                         </div>
                         <div class="col-12 col-md-6">
-                            <button class="btn w-100 mt-3" style="background-color: #B6357B; color: white;" type="submit" name="cerrar_sesion">Cerrar sesión</button>
+                            <button class="btn btn-danger w-100 mt-3" type="submit" name="cerrar_sesion">Cerrar sesión</button>
                         </div>
                     </div>
                 </form>

@@ -5,10 +5,6 @@
     $destino = $_POST['destino'];
     $fecha = $_POST['fecha'];
 
-    echo $origen;
-    echo $destino;
-    echo $fecha;
-
     $sql = "SELECT * FROM trayecto WHERE origen = ? AND destino = ? AND fecha = ?";
     $stmt = $conection->prepare($sql);
     $stmt -> bind_param("sss", $origen, $destino, $fecha);
@@ -20,7 +16,6 @@
         exit();
     } else {
         // echo "origen: $origen, destino: $destino, fecha: $fecha";
-        // echo '<p>No se encontraron resultados para su búsqueda.</p>';
         echo "<script>
                 alert('No se encontraron resultados para su búsqueda.');
                 window.location.href = 'index.php';

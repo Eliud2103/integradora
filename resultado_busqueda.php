@@ -26,7 +26,7 @@
         <?php include 'components/head_meta.php'; ?>
         <style>
             .result-card {
-                background-color: #f1f1f1;
+                background-color: #C9D8F5;
                 border-radius: 10px;
                 margin-bottom: 20px;
                 padding: 20px;
@@ -53,17 +53,17 @@
     <body>
         <?php include 'components/navbar.php'; ?>
         <div class="container mt-4">
-            <h3 class="text-center">RESULTADOS DE BUSQUEDA</h3>
+            <h3 class="text-center">RESULTADOS</h3>
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '
-                    <div class="row result-card">
-                        <div class="col-md-2">
+                    <div class="row result-card m-1">
+                        <div class="col-12 col-md-2">
                             <img src="assets/images/autobus.png" alt="Bus">
                         </div>
-                        <div class="col-md-6">
-                            <ul class="">
+                        <div class="col-md-6 bg-light">
+                            <ul class="mt-3">
                                 <li>
                                     <div class="-badge"><i class="glyphicon glyphicon-check"></i></div>
                                     <div class="-panel">
@@ -76,16 +76,16 @@
                                     <div class="-badge"><i class="glyphicon glyphicon-check"></i></div>
                                     <div class="-panel">
                                         <div class="-body">
-                                            <p><strong>' . $row['hora_llegada'] . ' h</strong> ' . $row['destino'] . '</p>
+                                            <p>' . $row['hora_llegada'] . ' h ' . $row['destino'] . '</p>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 text-center">
-                            <div class="price">$100 MXN</div>
+                        <div class="col-md-3 text-cente bg-light">
+                            <div class="price mt-2">$100 MXN</div>
                         </div>
-                        <div class="col-md-1 text-right">';
+                        <div class=" col-md-1 text-right bg-light">';
                     
                     if (isset($_SESSION['user_id'])) {
                         echo '<form action="apartar_boleto.php" method="POST">
@@ -95,10 +95,10 @@
                                   <input type="hidden" name="fecha" value="' . $row['fecha'] . '">
                                   <input type="hidden" name="hora" value="' . $row['hora_salida'] . '">
                                   <input type="hidden" name="monto_pagar" value="100">
-                                  <button type="submit" class="btn btn-primary">Continuar</button>
+                                  <button type="submit" class="btn btn-primary mt-2 mb-3">Continuar</button>
                               </form>';
                     } else {
-                        echo '<button onclick="location.href=\'auth/login.php\'" class="btn btn-primary">Continuar</button>';
+                        echo '<button onclick="location.href=\'auth/login.php\'" class="btn btn-primary mt-2">Continuar</button>';
                     }
                     echo '</div>
                     </div>';

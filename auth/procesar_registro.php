@@ -17,15 +17,12 @@
             $stmt->bind_param("sss", $nombre_usuario, $correo_electronico, $contrasena);
         
             if ($stmt->execute()) {
-                // Una vez registrado, obtener el ID del usuario recién insertado
                 $user_id = $stmt->insert_id;
 
-                // Configurar las variables de sesión para el nuevo usuario
                 $_SESSION['user_id'] = $user_id;
-                $_SESSION['nombre_usuario'] = $nombre_usuario; // Opcional, según necesidad de la aplicación
+                $_SESSION['nombre_usuario'] = $nombre_usuario;
 
-                // Redireccionar a la página de bienvenida o al perfil del usuario
-                header("Location: ../profile.php"); // Ajusta esta ruta según necesites
+                header("Location: ../profile.php");
                 exit;
             } else {
                 echo "Error: al registrar el usuario: " . $stmt->error;

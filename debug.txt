@@ -1,14 +1,14 @@
 Array
 (
-    [codigo_apartado] => 5
-    [num_asiento] => 5
+    [codigo_apartado] => 10, 11
+    [num_asiento] => 10, 11
     [estado_reserva] => ocupado
-    [id_usuario] => 4
-    [id_horario] => 21
-    [id_trayecto] => 5
-    [origen] => Oaxaca
-    [destino] => Santa Lucia
-    [fecha] => 2024-07-21
-    [hora_salida] => 09:00:00
+    [id_usuario] => 8
+    [id_horario] => 24
+    [id_trayecto] => 6
+    [origen] => Mexico
+    [destino] => San Pablo
+    [fecha] => 2024-07-24
+    [hora_salida] => 22:00:00
     [monto_pagar] => 100
 )
