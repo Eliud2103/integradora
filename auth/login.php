@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TicketOax</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -35,17 +35,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                    <div class="d-flex">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../index.php" tabindex="-1" style="color: white" aria-disabled="true">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../contact.php" tabindex="-1" style="color: white" aria-disabled="true">Contacto</a>
-                            </li>
-                        </ul>
+                    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
                     </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="index.php" style="color: white">INICIO</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="contact.php" style="color: white">CONTACTO</a>
+                        </li>
+                    </ul>
                 </div>
                 <a href="../user.php">
                     <img style="width: 45px;" class="logoUser" src="../assets/images/user.png" alt="">

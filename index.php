@@ -77,29 +77,29 @@
         <?php include 'components/navbar.php'; ?>
         <div class="fondo">
             <form class="" action="procesar_trayecto.php" method="POST">
-            <select class="select mt-5 mb-3" id="origen" name="origen">
-                <?php if ($result_origen->num_rows > 0): ?>
-                    <?php while($row = $result_origen->fetch_assoc()): ?>
-                        <option value="<?php echo htmlspecialchars($row['origen']); ?>">
-                            <?php echo htmlspecialchars($row['origen']); ?>
-                        </option>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <option>No hay orígenes disponibles</option>
-                <?php endif; ?>
-            </select>
-            <select class="select mb-3" id="destino" name="destino">
-                <?php if ($result_destino->num_rows > 0): ?>
-                    <?php while($row = $result_destino->fetch_assoc()): ?>
-                        <option value="<?php echo htmlspecialchars($row['destino']); ?>">
-                            <?php echo htmlspecialchars($row['destino']); ?>
-                        </option>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <option>No hay destinos disponibles</option>
-                <?php endif; ?>
-            </select>
-                <input type="date" name="fecha" required>
+                <select class="select mt-5 mb-3" id="origen" name="origen">
+                    <?php if ($result_origen->num_rows > 0): ?>
+                        <?php while($row = $result_origen->fetch_assoc()): ?>
+                            <option value="<?php echo htmlspecialchars($row['origen']); ?>">
+                                <?php echo htmlspecialchars($row['origen']); ?>
+                            </option>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <option>No hay orígenes disponibles</option>
+                    <?php endif; ?>
+                </select>
+                <select class="select mb-3" id="destino" name="destino">
+                    <?php if ($result_destino->num_rows > 0): ?>
+                        <?php while($row = $result_destino->fetch_assoc()): ?>
+                            <option value="<?php echo htmlspecialchars($row['destino']); ?>">
+                                <?php echo htmlspecialchars($row['destino']); ?>
+                            </option>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <option>No hay destinos disponibles</option>
+                    <?php endif; ?>
+                </select>
+                <input type="text" id="fecha" name="fecha" required>
                 <button type="submit" class="btn btn-light btn-lg mx-4 mt-2 boton_buscar">Buscar</button>
             </form>
         </div>
@@ -136,4 +136,15 @@
 
     </body>
     <?php include 'components/footer.php'; ?>
+
+    <script>
+    // Asegurarte de que el documento esté listo antes de aplicar el datepicker
+    $(document).ready(function(){
+        $("#fecha").datepicker({
+            dateFormat: "yy-mm-dd" // Formato de la fecha
+        });
+    });
+    </script>
+
+
 </html>
