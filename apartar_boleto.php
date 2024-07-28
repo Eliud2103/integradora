@@ -128,6 +128,7 @@
             padding: 20px;
             border-radius: 10px;
         }
+        
         .seat-map {
             display: flex;
             flex-wrap: wrap;
@@ -194,8 +195,8 @@
 </head>
 <body>
     <?php include 'components/navbar.php'; ?>
+    <h3 class="text-center mt-3">APARTADO DE BOLETOS</h3>
     <div class="container main-card">
-        <h3 class="text-center">APARTADO DE BOLETOS</h3>
         <div class="row">
             <div class="col-md-2 text-center">
                 <img src="assets/images/autobus.png" alt="Autobús" class="bus-img">

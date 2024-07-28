@@ -29,7 +29,8 @@
                 background-color: #C9D8F5;
                 border-radius: 10px;
                 margin-bottom: 20px;
-                padding: 20px;
+                padding: 40px;
+                height: 200px;
             }
             .result-card img {
                 width: 100px;
@@ -48,21 +49,45 @@
                 border-radius: 10px;
                 font-size: 1.2rem;
             }
+            
+            @media (max-width: 768px) {
+                .result-card {
+                    background-color: #C9D8F5;
+                    border-radius: 10px;
+                    margin-bottom: 30px;
+                    padding: 40px;
+                    height: 400px;
+                }
+                .background_button{
+                    background-color: #f8f9fa;
+                }
+                .result-card .price {
+                    background-color: #bce5e5;
+                    padding: 10px 5px;
+                    border-radius: 10px;
+                    font-size: 15px;
+                }
+                .result-card .btn {
+                    background-color: #2c3e50;
+                    color: white;
+                    border-radius: 15px;
+                }
+            }
         </style>
     </head>
     <body>
         <?php include 'components/navbar.php'; ?>
-        <div class="container mt-4">
+        <div class="container mt-4 mb-5">
             <h3 class="text-center">RESULTADOS</h3>
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '
-                    <div class="row result-card m-1">
-                        <div class="col-12 col-md-2">
+                    <div class="row result-card">
+                        <div class="col-12 col-md-2 col-lg-2">
                             <img src="assets/images/autobus.png" alt="Bus">
                         </div>
-                        <div class="col-md-6 bg-light">
+                        <div class="col-12 col-md-6 col-lg-6 bg-light rounded">
                             <ul class="mt-3">
                                 <li>
                                     <div class="-badge"><i class="glyphicon glyphicon-check"></i></div>
@@ -82,10 +107,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 text-cente bg-light">
+                        <div class="col-6 col-md-2 col-lg-3 text-center bg-light rounded pt-4">
                             <div class="price mt-2">$100 MXN</div>
                         </div>
-                        <div class=" col-md-1 text-right bg-light">';
+                        <div class="col-6 col-md-3 col-lg-1 text-right pt-2 background_button rounded">';
                     
                     if (isset($_SESSION['user_id'])) {
                         echo '<form action="apartar_boleto.php" method="POST">
@@ -95,7 +120,7 @@
                                   <input type="hidden" name="fecha" value="' . $row['fecha'] . '">
                                   <input type="hidden" name="hora" value="' . $row['hora_salida'] . '">
                                   <input type="hidden" name="monto_pagar" value="100">
-                                  <button type="submit" class="btn btn-primary mt-2 mb-3">Continuar</button>
+                                  <button type="submit" class="btn btn-primary mt-4 py-2 px-3 mb-3">Apartar</button>
                               </form>';
                     } else {
                         echo '<button onclick="location.href=\'auth/login.php\'" class="btn btn-primary mt-2">Continuar</button>';

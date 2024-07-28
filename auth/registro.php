@@ -12,20 +12,77 @@
         <link rel="stylesheet" href="../styles/style.css">
     </head>
     <style>
-        .bg-form {
-            background-color: #d6e1f7;
-            border-radius: 10px;
-            padding: 20px;
-        }
+        input[type="password"], input[type="email"], input[type="text"] {
+                border: none;
+                border-radius: 12px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px 15px;
+                background-color: #FFFFFF;
+                width: 60%;
+                display: block;
+                margin: 0px auto 0px;
+            }
 
-        .btn-primary{
-            background-color: #6DA0ED;
-            border-radius: 20px
-        }
-        .btn-danger{
-            background-color: #B6357B;
-            border-radius: 20px
-        }
+            .form-control:focus {
+                box-shadow: 0 0 0 0.2rem rgba(109, 160, 237, 0.25);
+                border-color: #6DA0ED;
+            }
+
+            label {
+                color: #465772;
+                display: block;
+                margin-bottom: 0px;
+                font-size: 20px;
+            }
+
+            .bg-form {
+                padding: 10px 30px 10px;
+                border-radius: 20px;
+                background-color: #d6e1f7;
+                max-width: 60%;
+                margin: 20px auto 30px;
+            }
+
+            .texto_italic {
+                font-family: italic;
+            }
+
+            .btn-primary{
+                background-color: #6DA0ED;
+                border-radius: 20px;
+                padding: 10px 60px;
+            }
+
+            @media (max-width: 768px) {
+                .bg-form {
+                    padding: 0px;
+                    margin-top: 5% auto;
+                    max-width: 90%;
+                    border-radius: 10px;
+                }
+
+                .btn {
+                    width: 100%;
+                    margin: 10px 0;
+                }
+                
+                input[type="password"], input[type="email"], input[type="text"] {
+                    border-radius: 10px;
+                    width: 100%;
+                    margin: 10px 0;
+                    background-color: #FFFFFF;
+                    padding: 22px 15px;
+                }
+
+                .btn-primary {
+                    font-size: 16px;
+                    border-radius: 15px;
+                }
+
+                label {
+                    font-size: 14px;
+                }
+            }
     </style>
 
 </head>
@@ -56,7 +113,7 @@
         </nav>
         <div id="mensaje"></div>
         <h4 class="mt-4 text-center">REGISTRO</h4>
-        <div class="container text-center bg-form mt-5 mx-auto"  style="max-width: 60%">   
+        <div class="container text-center bg-form mt-5 mx-auto mb-5">   
             <div class="p-3" >
                 <form action="auth/procesar_registro.php" method="POST" id="formulario">
                     <div class="form-group">
@@ -71,7 +128,7 @@
                         <label for="">Contraseña</label>
                         <input type="password" class="form-control" id="contrasena" name="contrasena" required>
                     </div>
-                    <button class=" btn btn-primary mt-3" type="submit" name="registrarse" >Registrarse</button>
+                    <button class=" btn btn-primary" type="submit" name="registrarse" >Registrarse</button>
                 </form>
             </div>
         </div>

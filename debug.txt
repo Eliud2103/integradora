@@ -1,9 +1,9 @@
 Array
 (
-    [codigo_apartado] => 10, 11
-    [num_asiento] => 10, 11
+    [codigo_apartado] => 7
+    [num_asiento] => 7
     [estado_reserva] => ocupado
-    [id_usuario] => 8
+    [id_usuario] => 10
     [id_horario] => 24
     [id_trayecto] => 6
     [origen] => Mexico

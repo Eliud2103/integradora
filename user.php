@@ -31,11 +31,36 @@
     <?php include 'components/head_meta.php'; ?>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .bg-form {
-            background-color: #d6e1f7;
-            border-radius: 10px;
-            padding: 20px;
+        input[type="text"], input[type="email"] {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 15px;
+            background-color: #E9F2FF;
+            width: 60%;
+            display: block;
+            margin: 5px auto 15px;
         }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(109, 160, 237, 0.25);
+            border-color: #6DA0ED;
+        }
+
+        label {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .bg-form {
+            padding: 10px 30px 50px;
+            border-radius: 20px;
+            background-color: #d6e1f7;
+            max-width: 500px;
+            margin: 20px auto 30px;
+        }
+
         .btn-primary{
             background-color: #6DA0ED;
             border-radius: 20px
@@ -44,17 +69,66 @@
             background-color: #B6357B;
             border-radius: 20px
         }
+
+        .user-icon-container {
+            position: relative;
+            top: -45px;
+            margin: 0 auto;
+            width: 50px;
+        }
+
+        .user-icon {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .bg-form {
+                padding: 0px;
+                margin-top: 10px;
+                max-width: 90%;
+                border-radius: 10px;
+            }
+
+            .user-icon-container {
+                display: none;
+            }
+
+            input[type="text"], input[type="email"], .btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+            input[type="text"], input[type="email"] {
+                border-radius: 10px;
+                width: 100%;
+                margin: 10px 0;
+                background-color: #FFFFFF;
+            }
+
+            .btn-primary, .btn-danger {
+                font-size: 16px;
+                border-radius: 15px;
+            }
+
+            label {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <?php include 'components/navbar.php'; ?>
-    <div class="container text-center">
-        <h4 class="mt-4">MI PERFIL</h4>
+    <div class="container text-center mb-5">
+        <h4 class="mt-4 mb-4">MI PERFIL</h4>
         <div class="bg-form mx-auto" style="max-width: 100%;">
             <div class="p-3">
                 <form action="auth/procesar_perfil.php" method="POST" id="formulario">
-                    <img class="img-fluid" src="assets/images/user.png" style="width: 50px; height: 50px;" alt="">
-                    <div class="form-group mt-3">
+                    <div class="user-icon-container">
+                        <img class="user-icon img-fluid" src="assets/images/user.png" alt="User Icon">
+                    </div>
+
+                    <div class="form-group">
                         <label for="nombre_usuario">Nombre completo</label>
                         <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($user['nombre_usuario']); ?>" required>
                     </div>
@@ -64,10 +138,10 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <button class="btn btn-primary w-100 mt-3"type="submit" name="cambio_contraseña">Cambiar contraseña</button>
+                            <button class="btn btn-primary btn-lg w-100 mt-3"type="submit" name="cambio_contraseña">Cambiar contraseña</button>
                         </div>
                         <div class="col-12 col-md-6">
-                            <button class="btn btn-danger w-100 mt-3" type="submit" name="cerrar_sesion">Cerrar sesión</button>
+                            <button class="btn btn-danger btn-lg w-100 mt-3" type="submit" name="cerrar_sesion">Cerrar sesión</button>
                         </div>
                     </div>
                 </form>

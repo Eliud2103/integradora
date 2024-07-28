@@ -11,19 +11,76 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="../styles/style.css">
         <style>
+            input[type="password"], input[type="email"] {
+                border: none;
+                border-radius: 12px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px 15px;
+                background-color: #FFFFFF;
+                width: 60%;
+                display: block;
+                margin: 0px auto 0px;
+            }
+
+            .form-control:focus {
+                box-shadow: 0 0 0 0.2rem rgba(109, 160, 237, 0.25);
+                border-color: #6DA0ED;
+            }
+
+            label {
+                color: #465772;
+                display: block;
+                margin-bottom: 0px;
+                font-size: 20px;
+            }
+
             .bg-form {
+                padding: 10px 30px 10px;
+                border-radius: 20px;
                 background-color: #d6e1f7;
-                border-radius: 10px;
-                padding: 20px;
+                max-width: 60%;
+                margin: 20px auto 30px;
+            }
+
+            .texto_italic {
+                font-family: italic;
             }
 
             .btn-primary{
                 background-color: #6DA0ED;
-                border-radius: 20px
+                border-radius: 20px;
+                padding: 10px 60px;
             }
-            .btn-danger{
-                background-color: #B6357B;
-                border-radius: 20px
+
+            @media (max-width: 768px) {
+                .bg-form {
+                    padding: 0px;
+                    margin-top: 5% auto;
+                    max-width: 90%;
+                    border-radius: 10px;
+                }
+
+                .btn {
+                    width: 100%;
+                    margin: 10px 0;
+                }
+                
+                input[type="password"], input[type="email"] {
+                    border-radius: 10px;
+                    width: 100%;
+                    margin: 10px 0;
+                    background-color: #FFFFFF;
+                    padding: 22px 15px;
+                }
+
+                .btn-primary {
+                    font-size: 16px;
+                    border-radius: 15px;
+                }
+
+                label {
+                    font-size: 14px;
+                }
             }
         </style>
     </head>
@@ -52,8 +109,8 @@
             </div>
         </nav>
         <div id="mensaje"></div>
-        <div class="container text-center bg-form mt-5 mx-auto"  style="max-width: 60%">   
-            <h4 class="mt-4">INICIAR SESIÓN</h4>
+        <h4 class="mt-4 text-center">INICIAR SESIÓN</h4>    
+        <div class="container text-center bg-form mt-5 mx-auto">   
             <div class="p-3" >
                 <form action="procesar_login.php" method="POST" id="formulario">
                     <div class="form-group">
@@ -64,9 +121,9 @@
                         <label for="contrasena_nueva">Contraseña</label>
                         <input type="password" class="form-control" id="contrasena" name="contrasena" required>
                     </div>
-                    <p class="mt-4">¿Olvidaste tu contraseña?</p> 
+                    <p class="texto_italic">¿Olvidaste tu contraseña?</p> 
                     <button class="boton btn btn-primary" type="submit" name="iniciar_sesion">Iniciar sesión</button>
-                    <p>¿No tienes una cuenta? <a style="color: #FF4081" href="registro.php  ">Registráte</a></p>
+                    <p class="texto_italic">¿No tienes una cuenta? <a style="color: #FF4081" href="registro.php  ">Registráte</a></p>
                 </form>
             </div>
         </div>

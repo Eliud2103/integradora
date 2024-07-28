@@ -44,32 +44,55 @@
             .card-custom {
                 border: none;
                 max-width: 500px;
-                max-height: 190px;
+                height: 150px;
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
             }
-            
+
             .card-custom img {
-                max-height: 100%;
-                max-width: 100%;
-                object-fit: contain;
+                height: 70%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .card-custom .card-body {
+                height: 40%;
+                overflow-y: auto;
             }
 
             @media (max-width: 768px) {
-            .fondo {
-                height: 300px;
-            }
-            .card-custom {
-                border: none;
-                max-width: 500px;
-                max-height: 190px;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-            }
+                .fondo{
+                    height: 300px;
+                }
 
-        }
+                .card-custom {
+                    flex-direction: row;
+                    max-height: 300px;
+                }
+
+                .card-custom .col-md-7, .card-custom .col-md-5 {
+                    flex: 1;
+                    max-width: 50%;
+                }
+
+                .card-custom img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+
+                .card-body {
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+
+                .card-body h5, .card-body p {
+                    margin: 0;
+                }
+            }
 
         </style>
     </head>
@@ -99,7 +122,7 @@
                         <option>No hay destinos disponibles</option>
                     <?php endif; ?>
                 </select>
-                <input type="text" id="fecha" name="fecha" required>
+                <input type="text" id="fecha" name="fecha" placeholder="Fecha" required>
                 <button type="submit" class="btn btn-light btn-lg mx-4 mt-2 boton_buscar">Buscar</button>
             </form>
         </div>
