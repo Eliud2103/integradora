@@ -1,5 +1,6 @@
 <?php
     include 'conection/conection.php';
+    session_start();
     
     $sql = "SELECT id, titulo, resumen, contenido, fecha, imagen FROM noticias ORDER BY fecha DESC";
     $result = $conection->query($sql);
@@ -97,6 +98,7 @@
         </style>
     </head>
     <body>
+        
         <?php include 'components/navbar.php'; ?>
         <div class="fondo">
             <form class="" action="procesar_trayecto.php" method="POST">

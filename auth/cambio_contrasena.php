@@ -1,17 +1,22 @@
 <?php 
     include '../conection/conection.php';
+    session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TicketOax</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <link rel="stylesheet" href="../styles/style.css">
 
         <style>
@@ -84,29 +89,37 @@
     </head>
 <body>
     <nav class="navbar navbar-expand-lg">
-        <img class="logoTicket" style="width: 200px;" src="../assets/images/logoTicket.png" alt="">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                <div class="d-flex">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.php" tabindex="-1" style="color: white" aria-disabled="true">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../contact.php" tabindex="-1" style="color: white" aria-disabled="true">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <a href="../user.php">
-                <img style="width: 45px;" class="logoUser" src="../assets/images/user.png" alt="">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/images/logoTicket.png" alt="" style="width: 200px;">
             </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                style="border-color: rgba(255,255,255,0.1);">
+                <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(255, 255, 255, 1)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="../index.php" style="color: white;">INICIO</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="../contact.php" style="color: white;">CONTACTO</a>
+                    </li>
+                    <?php
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    ?>
+                    <a class="mx-3" href="<?php echo isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'; ?>">
+                        <img style="width: 45px;" src="../assets/images/user.png" alt="Perfil del usuario">
+                    </a>
+                </ul>
+            </div>
         </div>
     </nav>
+
     <div id="mensaje"></div>
     <h4 class="mt-5 text-center">CAMBIAR CONTRASEÑA</h4>
     <div class="container text-center bg-form  mx-auto"  style="max-width: 60%">   
