@@ -44,6 +44,9 @@
                                 <div class="card-body">
                                     <p><?php echo nl2br(htmlspecialchars($noticia['resumen'])); ?></p>
                                 </div>
+                                <div class="card-body">
+                                    <p><?php echo nl2br(htmlspecialchars($noticia['contenido'])); ?></p>
+                                </div>
                             </div>
                             <div class="col-md-5">
                                 <?php

@@ -1,7 +1,7 @@
 <?php
-$servidor='localhost:8889';
+$servidor='localhost';
 $usuario='root';
-$contrasena='root';
+$contrasena='';
 $base_de_datos='boletos';
 
 $conection = new mysqli($servidor, $usuario, $contrasena, $base_de_datos);

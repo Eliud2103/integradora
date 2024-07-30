@@ -40,26 +40,31 @@
 
             .bg-cards{
                 background-color: #E9F0FF;
+                border-radius: 15px;
             }
 
             .card-custom {
                 border: none;
                 max-width: 500px;
                 height: 150px;
-                overflow: hidden;
+                /*overflow: hidden;*/
                 display: flex;
                 flex-direction: column;
             }
 
             .card-custom img {
+                /*
                 height: 70%;
+                width: 100%;*/
                 width: 100%;
+                height: auto;
                 object-fit: cover;
             }
 
             .card-custom .card-body {
-                height: 40%;
+                height: 50%;
                 overflow-y: auto;
+               
             }
 
             @media (max-width: 768px) {
@@ -70,11 +75,14 @@
                 .card-custom {
                     flex-direction: row;
                     max-height: 300px;
+                    
+                  
                 }
 
                 .card-custom .col-md-7, .card-custom .col-md-5 {
                     flex: 1;
                     max-width: 50%;
+                    
                 }
 
                 .card-custom img {
@@ -93,6 +101,8 @@
                 .card-body h5, .card-body p {
                     margin: 0;
                 }
+               
+               
             }
 
         </style>
@@ -125,7 +135,7 @@
                     <?php endif; ?>
                 </select>
                 <input type="text" id="fecha" name="fecha" placeholder="Fecha" required>
-                <button type="submit" class="btn btn-light btn-lg mx-4 mt-2 boton_buscar">Buscar</button>
+                <button style="border-radius: 15px;" type="submit" class="btn btn-light btn-lg mx-4 mt-2 boton_buscar">Buscar</button>
             </form>
         </div>
         <h4 class="mt-4 text-center mb-3">DESTACADO</h4>
@@ -141,10 +151,10 @@
                             <a href="noticia.php?id=<?php echo $item['id']; ?>" class="text-decoration-none text-dark"> 
                                 <div class="card mb-4 mt-4 card-custom p-3">
                                     <div class="row g-0">
-                                        <div class="col-12 col-md-7">
-                                            <div class="card-body">
+                                        <div  class="col-12 col-md-7">
+                                            <div  class="card-body">
                                                 <h5 class="fw-bold"><?php echo htmlspecialchars($item['titulo']); ?></h5>
-                                                <p class="" style="font-size: 15px;"><?php echo htmlspecialchars($item['contenido']); ?></p>
+                                                <p class="" style="font-size: 15px;"><?php echo htmlspecialchars($item['resumen']); ?></p>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-5">

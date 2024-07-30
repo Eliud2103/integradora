@@ -3,6 +3,7 @@
 <head>
     <?php include 'components/head_meta.php'; ?>
     <style>
+        
         .bg-form{
             background-color: #d6e1f7;
         }
@@ -11,16 +12,25 @@
             display: block;
             margin-bottom: 8px;
             color: #4a4a4a;
+            margin-left: 20px;
         }
 
         input {
-            width: calc(100% - 20px);
+           /* width: calc(100% - 20px);*/
+            width: 40%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #BBD5FD;
+          /*  border: 1px solid #ccc;*/
+            border-radius: 10px;
+            background-color: #6DA0ED;
         }
+        .imagen{
+            margin-top: 40px;
+            width: 290px;
+            margin-left: 15px;
+
+        }
+       
         
     </style>
     
@@ -29,11 +39,11 @@
     <?php include 'components/navbar.php'; ?>
     <div class="container">
         <h4 class="mt-3 text-center">CONTACTO</h4>
-        <div class="row bg-form p-3">
-            <div class="col-8 mt-3">
+        <div class="row bg-form p-3 mt-4">
+            <div class="col-8 mt-4">
                 <form>
-                    <div class="form-group">
-                        <label for="nombre">Nombre: </label>
+                    <div class="form-group ">
+                        <label for="nombre">Nombre</label>
                         <input type="name" class="form-control" id="nombre" name="nombre" value="ADO" disabled>
                     </div>
                     <div class="form-group">
@@ -46,7 +56,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-4">
+            <div class="imagen">
                 <img class="img-fluid" src="assets/images/autobus.png" alt="">
             </div>
            

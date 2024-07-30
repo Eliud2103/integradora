@@ -24,9 +24,9 @@
         <style>
             input[type="password"], input[type="email"] {
                 border: none;
-                border-radius: 12px;
+                border-radius: 20px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 20px 15px;
+                padding: 10px 15px;
                 background-color: #FFFFFF;
                 width: 60%;
                 display: block;
@@ -121,6 +121,7 @@
                         }
                         ?>
                         <a class="mx-3" href="<?php echo isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'; ?>">
+
                             <img style="width: 45px;" src="../assets/images/user.png" alt="Perfil del usuario">
                         </a>
                     </ul>
@@ -130,7 +131,7 @@
 
         <div id="mensaje"></div>
         <h4 class="mt-4 text-center">INICIAR SESIÓN</h4>    
-        <div class="container text-center bg-form mt-5 mx-auto">   
+        <div class="container text-center bg-form mt-4 mx-auto">   
             <div class="p-3" >
                 <form action="procesar_login.php" method="POST" id="formulario">
                     <div class="form-group">

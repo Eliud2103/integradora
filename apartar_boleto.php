@@ -127,6 +127,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 10px;
+            
         }
         
         .seat-map {
@@ -190,6 +191,17 @@
         .btn-danger {
             background-color: #B6357B;
         }
+        .button-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: transparent; /* No fondo */
+}
+.buttons button{
+    border-radius: 15px;
+    width: 150px;
+    height: 40px;
+}
+
 
     </style>
 </head>
@@ -234,7 +246,7 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="seat-container">
+            <div class="button-container">
                     <div class="buttons">
                         <div id="bookingFormContainer" data-id-trayecto="<?php echo $id_trayecto; ?>">
                             <form id="bookingForm" action="apartar_boleto.php" method="POST">
@@ -253,7 +265,7 @@
                             </form>
                         </div>
                         <button id="btn-cancelar" class="btn btn-danger btn-lg" onclick="window.location.href='index.php'">Cancelar</button>
-                        <div class="price" id="price">$0.00MX</div>
+                        <div style="border-radius: 15px; color: white;" class="price" id="price">$0.00MX</div>
                     </div>
                 </div>
             </div>

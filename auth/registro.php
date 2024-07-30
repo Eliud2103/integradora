@@ -9,16 +9,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TicketOax</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="../styles/style.css">
     </head>
@@ -27,7 +23,7 @@
                 border: none;
                 border-radius: 12px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 20px 15px;
+                padding: 10px 15px;
                 background-color: #FFFFFF;
                 width: 60%;
                 display: block;
@@ -136,18 +132,20 @@
         <div class="p-3" >
             <form action="auth/procesar_registro.php" method="POST" id="formulario">
                 <div class="form-group">
-                    <label for="">Nombre completo</label>
+                    <label for="nombre_usuario">Nombre completo</label>
                     <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" required>
                 </div>
                 <div class="form-group">
-                    <label for="">Correo electrónico</label>
+                    <label for="correo_electronico">Correo electrónico</label>
                     <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
                 </div>
                 <div class="form-group">
-                    <label for="">Contraseña</label>
-                    <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena" required
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+                           title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial.">
                 </div>
-                <button class=" btn btn-primary" type="submit" name="registrarse" >Registrarse</button>
+                <button class="btn btn-primary" type="submit" name="registrarse">Registrarse</button>
             </form>
         </div>
     </div>
@@ -191,10 +189,8 @@
                 });
             });
         };
-
     </script>
 </body>
-
 <footer>
     <img src="../assets/images/icon-facebook-480.png" width="30px" alt="">
     <img src="../assets/images/icon-instagram-480.png" width="30px" alt="">

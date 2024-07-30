@@ -24,7 +24,7 @@
                 border: none;
                 border-radius: 12px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 20px 15px;
+                padding: 10px 15px;
                 background-color: #FFFFFF;
                 width: 60%;
                 display: block;
@@ -108,20 +108,20 @@
                         <a class="nav-link" href="../contact.php" style="color: white;">CONTACTO</a>
                     </li>
                     <?php
+                   
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start();
                     }
                     ?>
-                    <a class="mx-3" href="<?php echo isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'; ?>">
+                    <a class="mx-3" href="../user.php">
                         <img style="width: 45px;" src="../assets/images/user.png" alt="Perfil del usuario">
                     </a>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div id="mensaje"></div>
-    <h4 class="mt-5 text-center">CAMBIAR CONTRASEÑA</h4>
+    <h4 class="mt-4 text-center">CAMBIO DE CONTRASEÑA</h4>
     <div class="container text-center bg-form  mx-auto"  style="max-width: 60%">   
         <div class="p-3" >
             <form action="procesar_cambio_contrasena.php" method="POST" id="formulario">
@@ -130,14 +130,14 @@
                     <input type="email" class="form-control" id="correo" name="correo" required>
                 </div>
                 <div class="form-group">
-                    <label for="contrasena_nueva">Contraseña nueva</label>
+                    <label for="contrasena_nueva">Nueva contraseña </label>
                     <input type="password" class="form-control" id="contrasena_nueva" name="contrasena_nueva" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirmar_contrasena">Confirmar contraseña</label>
+                    <label for="confirmar_contrasena">Confirma tu contraseña</label>
                     <input type="password" class="form-control" id="confirmar_contrasena" name="confirmar_contrasena" required>
                 </div>
-                <button class=" btn btn-primary" type="submit" name="cambiar_contrasena">
+                <button class=" btn btn-primary mt-4" type="submit" name="cambiar_contrasena">
                     <span id="spinner" style="display: none;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>        
                     Aceptar
                 </button>
@@ -146,13 +146,13 @@
     </div>
 
     <footer style="position: fixed; bottom: 0; width:100%; height: 45px;" class="mt-4">
-        <a href="https://www.facebook.com/autobuseshalconoficial?mibextid=ZbWKwL" target="_blank">
-            <img src="../assets/images/icon-facebook-480.png" width="30px" alt="">
-        </a>
-        <a href="https://www.instagram.com/autobuseshalcon_oax?igsh=ZThic29ra2pkcW85" target="_blank">
-            <img src="../assets/images/icon-instagram-480.png" width="30px" alt="">
-        </a>
-    </footer>
+    <a href="https://www.facebook.com/autobuseshalconoficial?mibextid=ZbWKwL" target="_blank" style="text-decoration: none;">
+        <img style="margin_right: 10px; margin-left: 20px;margin-top:10px;" src="../assets/images/icon-facebook-480.png" width="30px" style="border: none; margin-right: 10px;" alt="">
+    </a>
+    <a href="https://www.instagram.com/autobuseshalcon_oax?igsh=ZThic29ra2pkcW85" target="_blank" style="text-decoration: none;">
+        <img style="margin-top:10px" src="../assets/images/icon-instagram-480.png" width="30px" style="border: none;" alt="">
+    </a>
+</footer>
 
     <script>
         document.getElementById('formulario').onsubmit = function(event) {

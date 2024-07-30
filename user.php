@@ -114,6 +114,7 @@
             label {
                 font-size: 14px;
             }
+            
         }
     </style>
 </head>
@@ -122,13 +123,13 @@
     <div class="container text-center mb-5">
         <h4 class="mt-4 mb-4">MI PERFIL</h4>
         <div class="bg-form mx-auto" style="max-width: 100%;">
-            <div class="p-3">
+            <div class="p-3 ">
                 <form action="auth/procesar_perfil.php" method="POST" id="formulario">
-                    <div class="user-icon-container">
-                        <img class="user-icon img-fluid" src="assets/images/user.png" alt="User Icon">
+                    <div class="user-icon-container ">
+                        <img class="user-icon img-fluid " src="assets/images/user.png" alt="User Icon">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group  ">
                         <label for="nombre_usuario">Nombre completo</label>
                         <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($user['nombre_usuario']); ?>" required>
                     </div>
