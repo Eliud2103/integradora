@@ -30,6 +30,10 @@
     <head>
         <?php include 'components/head_meta.php'; ?>
         <style>
+               h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
             .fondo {
                 background: url('assets/images/Fondo_inicio.jpg') no-repeat center center fixed;
                 background-size: cover;
@@ -39,7 +43,7 @@
             }
 
             .bg-cards{
-                background-color: #E9F0FF;
+                background-color: #C9D8F5;
                 border-radius: 15px;
             }
 
@@ -50,6 +54,7 @@
                 /*overflow: hidden;*/
                 display: flex;
                 flex-direction: column;
+                border-radius: 15px;
             }
 
             .card-custom img {
@@ -59,6 +64,7 @@
                 width: 100%;
                 height: auto;
                 object-fit: cover;
+                
             }
 
             .card-custom .card-body {
@@ -104,6 +110,7 @@
                
                
             }
+         
 
         </style>
     </head>

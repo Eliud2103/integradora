@@ -31,6 +31,10 @@
     <?php include 'components/head_meta.php'; ?>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+           h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
         input[type="text"], input[type="email"] {
             border: none;
             border-radius: 20px;
@@ -51,6 +55,8 @@
             color: #333;
             display: block;
             margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 200; /* 200 corresponde a Extra Light */
         }
 
         .bg-form {
@@ -131,11 +137,11 @@
 
                     <div class="form-group  ">
                         <label for="nombre_usuario">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($user['nombre_usuario']); ?>" required>
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($user['nombre_usuario']); ?>"readonly required>
                     </div>
                     <div class="form-group">
                         <label for="correo_electronico">Correo electrónico</label>
-                        <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo htmlspecialchars($user['correo_electronico']); ?>" required>
+                        <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo htmlspecialchars($user['correo_electronico']); ?>" readonly required>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6">

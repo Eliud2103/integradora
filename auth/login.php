@@ -8,6 +8,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TicketOax</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@1,200&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -22,6 +27,15 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="../styles/style.css">
         <style>
+             h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+.texto_italic {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200; /* 200 corresponde a Extra Light */
+    font-style: italic;
+}
             input[type="password"], input[type="email"] {
                 border: none;
                 border-radius: 20px;
@@ -31,6 +45,9 @@
                 width: 60%;
                 display: block;
                 margin: 0px auto 0px;
+            }
+            a{
+                text-decoration: none;
             }
 
             .form-control:focus {
@@ -43,6 +60,8 @@
                 display: block;
                 margin-bottom: 0px;
                 font-size: 20px;
+                font-family: 'Inter', sans-serif;
+                font-weight: 200; /* 200 corresponde a Extra Light */
             }
 
             .bg-form {
@@ -140,9 +159,12 @@
                     </div>
                     <div class="form-group">
                         <label for="contrasena_nueva">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                        <input type="password" class="form-control" id="contrasena" name="contrasena" required
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+                           title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial."
+                        >
                     </div>
-                    <p class="texto_italic">¿Olvidaste tu contraseña?</p> 
+                    <p  class="texto_italic"><a  href="cambio_contrasena.php">¿Olvidaste tu contraseña?</a> </p> 
                     <button class="boton btn btn-primary" type="submit" name="iniciar_sesion">Iniciar sesión</button>
                     <p class="texto_italic">¿No tienes una cuenta? <a style="color: #FF4081" href="registro.php  ">Registráte</a></p>
                 </form>
@@ -191,11 +213,11 @@
 
     </body>
     <footer style="position: fixed; bottom: 0; width:100%; height: 45px;" class="mt-4">
-        <a href="https://www.facebook.com/autobuseshalconoficial?mibextid=ZbWKwL" target="_blank">
-            <img src="../assets/images/icon-facebook-480.png" width="30px" alt="">
-        </a>
-        <a href="https://www.instagram.com/autobuseshalcon_oax?igsh=ZThic29ra2pkcW85" target="_blank">
-            <img src="../assets/images/icon-instagram-480.png" width="30px" alt="">
-        </a>
-    </footer>
+    <a href="https://www.facebook.com/autobuseshalconoficial?mibextid=ZbWKwL" target="_blank" style="text-decoration: none;">
+        <img style="margin_right: 10px; margin-left: 20px;margin-top:10px;" src="../assets/images/icon-facebook-480.png" width="30px" style="border: none; margin-right: 10px;" alt="">
+    </a>
+    <a href="https://www.instagram.com/autobuseshalcon_oax?igsh=ZThic29ra2pkcW85" target="_blank" style="text-decoration: none;">
+        <img style="margin-top:10px" src="../assets/images/icon-instagram-480.png" width="30px" style="border: none;" alt="">
+    </a>
+</footer>
 </html>

@@ -38,6 +38,8 @@
 
             $fecha_reservacion = date('Y-m-d H:i:s');
 
+            
+
             $stmt = $conection->prepare("INSERT INTO reservacion (asiento_reservado, estado_reserva, id_usuario, id_horario) VALUES (?, 'ocupado', ?, ?)");
             if (!$stmt) {
                 echo json_encode(['success' => false, 'error' => 'Error preparing query']);

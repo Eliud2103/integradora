@@ -28,12 +28,14 @@
     <style>
         .fondo_apartar {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             background-color: #d6e1f7;
             border-radius: 10px;
+            border-radius:15px;
         }
         .form_normal {
             background-color: white;
+            border-radius:15px;
         }
         .variables {
             text-align: left;
@@ -52,6 +54,13 @@
         .price {
             font-weight: bold;
             color: #2c3e50;
+            margin-left:-0px;
+        }
+        label{
+            margin-left:40px;
+        }
+        .hola{
+            margin-left:0px;
         }
     </style>
 </head>
@@ -61,8 +70,8 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <h4 class="mt-3">Apartado de boletos</h4>
-                <div class="fondo_apartar">
+                <h4 class="mt-3">APARTADO DE BOLETOS</h4>
+                <div class="fondo_apartar mt-3">
                     <div class="form_normal">
                         <h4>BOLETO APARTADO CON ÉXITO POR <span id="timer" class="timer">1:00:00</span></h4>
                         <div class="variables">
@@ -71,11 +80,11 @@
                             <label>Origen: <?php echo htmlspecialchars($origen); ?></label> <br>
                             <label>Destino: <?php echo htmlspecialchars($destino); ?></label> <br>
                             <label>Fecha: <?php echo htmlspecialchars($fecha); ?><br>
-                            <label>Hora: <?php echo htmlspecialchars($hora_salida); ?></label> <br>
-                            <label class="price">Monto a pagar: $<?php echo htmlspecialchars($monto_pagar); ?> MX</label>
+                            <label class="hola">Hora: <?php echo htmlspecialchars($hora_salida); ?></label> <br>
+                            <label class="price mt-3">Monto a pagar: $<?php echo htmlspecialchars($monto_pagar); ?> MX</label>
                         </div>
                         <a href="index.php">
-                            <button style="background-color: #B6357B; padding: 6px; width: 160px" class="mt-3 mb-3 btn" type="button">Ir a inicio</button>
+                            <button style="background-color: #B6357B; padding: 6px; width: 160px; border-radius:15px; color: white;" class="mt-3 mb-3 btn" type="button">Ir a inicio</button>
                         </a>
                     </div>
                 </div>

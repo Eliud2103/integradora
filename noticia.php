@@ -27,8 +27,21 @@
     <head>
         <?php include 'components/head_meta.php'; ?>
         <style>
+             h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
             .bg-cards{
                 background-color: #E9F0FF;
+                padding: 15px; 
+                border-radius: 15px;
+            }
+            .news-image {
+                margin: -12px; /* Añade espacio alrededor de la imagen */
+                border-radius: 10px; /* Opcional: redondea las esquinas de la imagen */
+            }
+            .card {
+                border-radius: 15px;
             }
 
         </style>
@@ -52,7 +65,7 @@
                                 <?php
                                     $image_path = '/' . $noticia['imagen'];
                                     if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $image_path)) {
-                                        echo '<img class="my-3 img-fluid rounded" src="' . htmlspecialchars($image_path) . '" alt="' . htmlspecialchars($noticia['titulo']) . '" style="width:400px;height:auto;"><br>';
+                                        echo '<img class="my-3  img-fluid rounded news-image"  src="' . htmlspecialchars($image_path) . '" alt="' . htmlspecialchars($noticia['titulo']) . '" style="width:400px;height:auto;"><br>';
                                     } else {
                                         echo 'Archivo no encontrado: ' . $_SERVER['DOCUMENT_ROOT'] . '/' . $image_path;
                                     }

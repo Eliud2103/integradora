@@ -8,6 +8,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TicketOax</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -19,6 +21,10 @@
         <link rel="stylesheet" href="../styles/style.css">
     </head>
     <style>
+         h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
         input[type="password"], input[type="email"], input[type="text"] {
                 border: none;
                 border-radius: 12px;
@@ -40,6 +46,8 @@
                 display: block;
                 margin-bottom: 0px;
                 font-size: 20px;
+                font-family: 'Inter', sans-serif;
+                font-weight: 200; /* 200 corresponde a Extra Light */
             }
 
             .bg-form {
@@ -118,7 +126,7 @@
                         session_start();
                     }
                     ?>
-                    <a class="mx-3" href="<?php echo isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'; ?>">
+                    <a class="mx-3" href="../user.php">
                         <img style="width: 45px;" src="../assets/images/user.png" alt="Perfil del usuario">
                     </a>
                 </ul>
@@ -128,7 +136,7 @@
 
     <div id="mensaje"></div>
     <h4 class="mt-4 text-center">REGISTRO</h4>
-    <div class="container text-center bg-form mt-5 mx-auto mb-5">   
+    <div class="container text-center bg-form mt-3 mx-auto mb-5">   
         <div class="p-3" >
             <form action="auth/procesar_registro.php" method="POST" id="formulario">
                 <div class="form-group">
@@ -145,7 +153,7 @@
                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
                            title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial.">
                 </div>
-                <button class="btn btn-primary" type="submit" name="registrarse">Registrarse</button>
+                <button class="btn btn-primary mt-4" type="submit" name="registrarse">Registrarse</button>
             </form>
         </div>
     </div>

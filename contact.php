@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include 'components/head_meta.php'; ?>
+    
+    <?php
+    session_start(); 
+     include 'components/head_meta.php'; 
+     ?>
     <style>
+         h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
         
         .bg-form{
             background-color: #d6e1f7;
+            border-radius: 15px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
             color: #4a4a4a;
-            margin-left: 20px;
-        }
+            margin-left: 30px;
+            font-family: 'Inter', sans-serif;
+        font-weight: 200; /* 200 corresponde a Extra Light */        }
 
         input {
            /* width: calc(100% - 20px);*/
@@ -24,14 +34,37 @@
             border-radius: 10px;
             background-color: #6DA0ED;
         }
+       
         .imagen{
-            margin-top: 40px;
             width: 290px;
-            margin-left: 15px;
+            margin-left:650px;
+            position: relative;
+            display: flex;
 
         }
+        .logo{
+            position: absolute;
+            align-items: start;
+            margin-top: -290px;
+            margin-left: -40px;
+        }
+        .autobus{
+            position:absolute;
+            margin-top: -252px;
+            margin-left: -45px;
+        }
        
-        
+        .form-control{
+            border-radius: 30px;
+            width: 65%;
+            background-color: #6DA0ED;
+            
+        }
+        input.form-control:disabled {
+            background-color: #BBD5FD;
+            color: black; /* Asegura que el texto siga siendo legible */
+            opacity: 1; /* Remueve la opacidad reducida que algunos navegadores aplican */
+        }
     </style>
     
 </head>
@@ -57,7 +90,8 @@
                 </form>
             </div>
             <div class="imagen">
-                <img class="img-fluid" src="assets/images/autobus.png" alt="">
+                <img  class="logo img-fluid " src="assets/images/logoTicket.png" alt="">
+                <img class="autobus img-fluid" src="assets/images/autobus.png" alt="">
             </div>
            
 

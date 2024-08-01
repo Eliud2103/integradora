@@ -1,108 +1,100 @@
 <?php
-    session_start();
-    include 'conection/conection.php';
+session_start();
+include 'conection/conection.php';
 
-    if (!isset($_SESSION['user_id'])) {
-        header('Location: auth/login.php');
-        exit;
-    }
+if (!isset($_SESSION['user_id'])) {
+    header('Location: auth/login.php');
+    exit;
+}
 
-    $id_trayecto = $_POST['id_trayecto'] ?? 'No recibido';
+$id_trayecto = $_POST['id_trayecto'] ?? 'No recibido';
 
-    $stmt = $conection->prepare("SELECT origen, destino, fecha FROM trayecto WHERE id_trayecto = ?");
-    $stmt->bind_param("i", $id_trayecto);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $origen = $row['origen'];
-        $destino = $row['destino'];
-        $fecha = $row['fecha'];
-    } else {
-        echo "<script>
-                // alert('Datos del trayecto no encontrados.');
-                alert('Datos del trayecto no encontrados.');
-                window.location.href = 'index.php';
-              </script>";
-        exit;  
-    }
-    $stmt->close();
+$stmt = $conection->prepare("SELECT origen, destino, fecha FROM trayecto WHERE id_trayecto = ?");
+$stmt->bind_param("i", $id_trayecto);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $origen = $row['origen'];
+    $destino = $row['destino'];
+    $fecha = $row['fecha'];
+} else {
+    echo "<script>
+            alert('Datos del trayecto no encontrados.');
+            window.location.href = 'index.php';
+          </script>";
+    exit;  
+}
+$stmt->close();
 
-    $stmt = $conection->prepare("SELECT hora_salida FROM horario WHERE id_trayecto = ?");
-    $stmt->bind_param("i", $id_trayecto);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $hora_salida = $row['hora_salida'];
-    } else {
-        // echo "Hora de salida no encontrada.";
-        echo "<script>
-                // alert('Hora de salida no encontrada.');
-                alert('Hora de salida no encontrada.');
-                window.location.href = 'index.php';
-              </script>";
-        exit;  
-    }
-    $stmt->close();
+$stmt = $conection->prepare("SELECT hora_salida FROM horario WHERE id_trayecto = ?");
+$stmt->bind_param("i", $id_trayecto);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $hora_salida = $row['hora_salida'];
+} else {
+    echo "<script>
+            alert('Hora de salida no encontrada.');
+            window.location.href = 'index.php';
+          </script>";
+    exit;  
+}
+$stmt->close();
 
-    $stmt = $conection->prepare("SELECT id_horario FROM horario WHERE id_trayecto = ?");
-    $stmt->bind_param("i", $id_trayecto);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $id_horario = 0;
+$stmt = $conection->prepare("SELECT id_horario FROM horario WHERE id_trayecto = ?");
+$stmt->bind_param("i", $id_trayecto);
+$stmt->execute();
+$result = $stmt->get_result();
+$id_horario = 0;
 
-    if ($row = $result->fetch_assoc()) {
-        $id_horario = $row['id_horario'];
-    } else {
-        // echo "No se encontró un horario para el trayecto especificado.";
-        echo "<script>
-                alert('No se encontró un horario para el trayecto especificado.');
-                // alert('Datos no encontrados.');
-                window.location.href = 'index.php';
-              </script>";
-        exit;  
-    }
-    $stmt->close();
+if ($row = $result->fetch_assoc()) {
+    $id_horario = $row['id_horario'];
+} else {
+    echo "<script>
+            alert('No se encontró un horario para el trayecto especificado.');
+            window.location.href = 'index.php';
+          </script>";
+    exit;  
+}
+$stmt->close();
 
-    $stmt = $conection->prepare("SELECT id_autobus FROM horario WHERE id_trayecto = ?");
-    $stmt->bind_param("i", $id_trayecto);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $id_autobus = 0;
+$stmt = $conection->prepare("SELECT id_autobus FROM horario WHERE id_trayecto = ?");
+$stmt->bind_param("i", $id_trayecto);
+$stmt->execute();
+$result = $stmt->get_result();
+$id_autobus = 0;
 
-    if ($row = $result->fetch_assoc()) {
-        $id_autobus = $row['id_autobus'];
-    } else {
-        // echo "No se encontró un autobús para el trayecto especificado.";
-        echo "<script>
-                alert('No se encontró un autobús para el trayecto especificado.');
-                // alert('Datos no encontrados.');
-                window.location.href = 'index.php';
-              </script>";
-        exit;  
-    }
-    $stmt->close();
+if ($row = $result->fetch_assoc()) {
+    $id_autobus = $row['id_autobus'];
+} else {
+    echo "<script>
+            alert('No se encontró un autobús para el trayecto especificado.');
+            window.location.href = 'index.php';
+          </script>";
+    exit;  
+}
+$stmt->close();
 
-    $numero_autobus = $id_autobus;
-    $stmt = $conection->prepare("SELECT asientos FROM autobus WHERE id_autobus = ?");
-    $stmt->bind_param("i", $numero_autobus);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+$numero_autobus = $id_autobus;
+$stmt = $conection->prepare("SELECT asientos FROM autobus WHERE id_autobus = ?");
+$stmt->bind_param("i", $numero_autobus);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 
-    $numero_asientos = $row['asientos'] ?? 0;
+$numero_asientos = $row['asientos'] ?? 0;
 
-    $stmt = $conection->prepare("SELECT asiento_reservado FROM reservacion WHERE id_horario = ? AND estado_reserva = 'ocupado' ");
-    $stmt->bind_param("i", $id_horario);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$stmt = $conection->prepare("SELECT asiento_reservado FROM reservacion WHERE id_horario = ? AND estado_reserva = 'ocupado' ");
+$stmt->bind_param("i", $id_horario);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    $asientos_ocupados = [];
-    while ($row = $result->fetch_assoc()) {
-        $asientos_ocupados[] = $row['asiento_reservado'];
-    }
+$asientos_ocupados = [];
+while ($row = $result->fetch_assoc()) {
+    $asientos_ocupados[] = $row['asiento_reservado'];
+}
 
-    $stmt->close();
-
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -110,6 +102,10 @@
 <head>
     <?php include 'components/head_meta.php'; ?>
     <style>
+         h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
         body {
             font-family: Arial, sans-serif;
         }
@@ -120,16 +116,14 @@
             padding: 20px;
         }
         .bus-img {
-            width: 50%;
+            width: 90%;
             max-width: 200px;
         }
         .seat-container {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            
         }
-        
         .seat-map {
             display: flex;
             flex-wrap: wrap;
@@ -143,13 +137,11 @@
             display: inline-block;
             margin: 5px;
         }
-
         .seat img {
             width: 100%;
             height: 100%;
             display: block;
         }
-
         .seat.available {
             background-color: #e1e1e1;
         }
@@ -157,11 +149,13 @@
             background-color: #7f5a83;
             color: white;
         }
+        .seat.selected .seat-number {
+            color: #ffffff; /* Cambia el color del número del asiento a blanco */
+        }
         .seat.occupied {
             background-color: #b0b0b0;
             cursor: not-allowed;
         }
-
         .seat-number {
             position: absolute;
             top: 50%;
@@ -170,7 +164,6 @@
             color: #000;
             pointer-events: none;
         }
-
         .price,
         .buttons {
             display: flex;
@@ -192,17 +185,15 @@
             background-color: #B6357B;
         }
         .button-container {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: transparent; /* No fondo */
-}
-.buttons button{
-    border-radius: 15px;
-    width: 150px;
-    height: 40px;
-}
-
-
+            padding: 20px;
+            border-radius: 10px;
+            background-color: transparent; /* No fondo */
+        }
+        .buttons button {
+            border-radius: 15px;
+            width: 150px;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -212,7 +203,7 @@
         <div class="row">
             <div class="col-md-2 text-center">
                 <img src="assets/images/autobus.png" alt="Autobús" class="bus-img">
-                <p>Autobús</p>
+                <p class="mt-4">Autobús</p>
             </div>
             <div class="col-md-8">
                 <div class="seat-container">
@@ -246,7 +237,7 @@
                 </div>
             </div>
             <div class="col-md-2">
-            <div class="button-container">
+                <div class="button-container">
                     <div class="buttons">
                         <div id="bookingFormContainer" data-id-trayecto="<?php echo $id_trayecto; ?>">
                             <form id="bookingForm" action="apartar_boleto.php" method="POST">
@@ -302,8 +293,6 @@
             }
         });
 
-
-
         document.getElementById('btn-apartar').addEventListener('click', (event) => {
             event.preventDefault();
             
@@ -323,7 +312,6 @@
                 const codigoApartado = 1;
                 document.getElementById('num_asiento').value = numAsientos;
                 document.getElementById('codigo_apartado').value = numAsientos;
-                
                 
                 monto_total = updatePrice();
 
@@ -355,7 +343,7 @@
 
                         let form = document.createElement('form');
                             form.method = 'POST';
-                            form.action = 'reservar_boleto.php';  // Asegúrate de que esta es la URL correcta
+                            form.action = 'reservar_boleto.php';
 
                             for (let key in fields) {
                                 let input = document.createElement('input');
