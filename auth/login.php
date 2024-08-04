@@ -48,6 +48,7 @@
             }
             a{
                 text-decoration: none;
+                color: black;
             }
 
             .form-control:focus {
@@ -87,7 +88,7 @@
                     padding: 0px;
                     margin-top: 5% auto;
                     max-width: 90%;
-                    border-radius: 10px;
+                    border-radius: 20px;
                 }
 
                 .btn {
@@ -96,20 +97,25 @@
                 }
                 
                 input[type="password"], input[type="email"] {
-                    border-radius: 10px;
+                    border-radius: 20px;
                     width: 100%;
                     margin: 10px 0;
                     background-color: #FFFFFF;
-                    padding: 22px 15px;
+                    padding: 10px 15px;
+                    border:none;
                 }
 
                 .btn-primary {
                     font-size: 16px;
                     border-radius: 15px;
+                    width: 70%;
                 }
 
                 label {
                     font-size: 14px;
+                }
+                .texto_italic{
+                    margin-top:20px;
                 }
             }
         </style>
@@ -117,7 +123,7 @@
     <body>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="../index.php">
                     <img src="../assets/images/logoTicket.png" alt="" style="width: 200px;">
                 </a>
                 
@@ -139,7 +145,7 @@
                             session_start();
                         }
                         ?>
-                        <a class="mx-3" href="<?php echo isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'; ?>">
+                        <a class="mx-3" href="../user.php">
 
                             <img style="width: 45px;" src="../assets/images/user.png" alt="Perfil del usuario">
                         </a>

@@ -37,7 +37,7 @@
                 border-radius: 15px;
             }
             .news-image {
-                margin: -12px; /* Añade espacio alrededor de la imagen */
+                margin-left:110px; /* Añade espacio alrededor de la imagen */
                 border-radius: 10px; /* Opcional: redondea las esquinas de la imagen */
             }
             .card {

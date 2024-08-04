@@ -24,7 +24,9 @@
          h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
+    
 }
+
         input[type="password"], input[type="email"], input[type="text"] {
                 border: none;
                 border-radius: 12px;
@@ -86,16 +88,17 @@
                     width: 100%;
                     margin: 10px 0;
                     background-color: #FFFFFF;
-                    padding: 22px 15px;
+                    padding: 10px 15px;
                 }
 
                 .btn-primary {
                     font-size: 16px;
                     border-radius: 15px;
+                    width: 70%;
                 }
 
                 label {
-                    font-size: 14px;
+                    font-size: 20px;
                 }
             }
     </style>
@@ -199,8 +202,12 @@
         };
     </script>
 </body>
-<footer>
-    <img src="../assets/images/icon-facebook-480.png" width="30px" alt="">
-    <img src="../assets/images/icon-instagram-480.png" width="30px" alt="">
+<footer style="position: fixed; bottom: 0; width:100%; height: 45px;" class="mt-4">
+    <a href="https://www.facebook.com/autobuseshalconoficial?mibextid=ZbWKwL" target="_blank" style="text-decoration: none;">
+        <img style="margin_right: 10px; margin-left: 20px;margin-top:10px;" src="../assets/images/icon-facebook-480.png" width="30px" style="border: none; margin-right: 10px;" alt="">
+    </a>
+    <a href="https://www.instagram.com/autobuseshalcon_oax?igsh=ZThic29ra2pkcW85" target="_blank" style="text-decoration: none;">
+        <img style="margin-top:10px" src="../assets/images/icon-instagram-480.png" width="30px" style="border: none;" alt="">
+    </a>
 </footer>
 </html>

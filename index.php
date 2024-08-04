@@ -44,10 +44,11 @@
 
             .bg-cards{
                 background-color: #C9D8F5;
-                border-radius: 15px;
+                border-radius: 20px;
             }
 
             .card-custom {
+                width: 380px;;
                 border: none;
                 max-width: 500px;
                 height: 150px;
@@ -59,23 +60,40 @@
 
             .card-custom img {
                 /*
+                
                 height: 70%;
                 width: 100%;*/
                 width: 100%;
                 height: auto;
                 object-fit: cover;
                 
+                
             }
 
             .card-custom .card-body {
-                height: 50%;
+                height: 70%;
                 overflow-y: auto;
                
             }
+            .select{
+                    margin-top: 90px;
+                    margin-left:30px;
+                }
 
             @media (max-width: 768px) {
+                .bg-cards{
+                    width: 400px;
+                    margin-bottom: 50px;
+                }
+               
+                .formm {
+                    text-align:center;
+                }
+                
+                
+                
                 .fondo{
-                    height: 300px;
+                    height: 400px;
                 }
 
                 .card-custom {
@@ -106,7 +124,19 @@
 
                 .card-body h5, .card-body p {
                     margin: 0;
+
                 }
+                .imgg{
+                    width: auto;
+                }
+                .select{
+                    margin-top: 10px;
+                    margin-left:30px;
+                }
+              .in{
+                margin-bottom: 50px;
+              }
+              
                
                
             }
@@ -118,7 +148,7 @@
         
         <?php include 'components/navbar.php'; ?>
         <div class="fondo">
-            <form class="" action="procesar_trayecto.php" method="POST">
+            <form class="formm" action="procesar_trayecto.php" method="POST">
                 <select class="select mt-5 mb-3" id="origen" name="origen">
                     <?php if ($result_origen->num_rows > 0): ?>
                         <?php while($row = $result_origen->fetch_assoc()): ?>
@@ -141,8 +171,8 @@
                         <option>No hay destinos disponibles</option>
                     <?php endif; ?>
                 </select>
-                <input type="text" id="fecha" name="fecha" placeholder="Fecha" required>
-                <button style="border-radius: 15px;" type="submit" class="btn btn-light btn-lg mx-4 mt-2 boton_buscar">Buscar</button>
+                <input class="in" type="text" id="fecha" name="fecha" placeholder="Fecha" required>
+                <button style="border-radius: 20px; width:120px;  " type="submit" class="btn btn-light btn-lg mx-4   boton_buscar">Buscar</button>
             </form>
         </div>
         <h4 class="mt-4 text-center mb-3">DESTACADO</h4>
@@ -164,7 +194,7 @@
                                                 <p class="" style="font-size: 15px;"><?php echo htmlspecialchars($item['resumen']); ?></p>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-5">
+                                        <div class=" col-12 col-md-5">
                                             <img src="/<?php echo htmlspecialchars($item['imagen']); ?>" class="img-fluid rounded" alt="Imagen">
                                         </div>
                                     </div>

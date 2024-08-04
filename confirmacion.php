@@ -38,8 +38,19 @@
 
             $fecha_reservacion = date('Y-m-d H:i:s');
 
-            
-
+            $checar = $conection->prepare("SELECT * from reservacion WHERE asiento_reservado = ?");
+            if (!$checar) {
+                echo json_encode(['success' => false, 'error' => 'Error preparing query']);
+                exit;
+            }
+            $checar->bind_param("i", $num_asiento);
+            $checar->execute();
+            $result = $checar->get_result();
+            $row = $result->fetch_assoc();
+            if ($row) {
+                echo json_encode(['success' => false, 'error' => 'Ya esta ocupado']);
+                exit;
+            }
             $stmt = $conection->prepare("INSERT INTO reservacion (asiento_reservado, estado_reserva, id_usuario, id_horario) VALUES (?, 'ocupado', ?, ?)");
             if (!$stmt) {
                 echo json_encode(['success' => false, 'error' => 'Error preparing query']);

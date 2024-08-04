@@ -63,22 +63,32 @@
             }
 
             @media (max-width: 768px) {
+                h4{
+
+                }
                 .bg-form {
+                    
                     padding: 0px;
                     margin-top: 10px;
                     max-width: 90%;
+                    
                     border-radius: 10px;
+                }
+                .p-3{
+                    margin-top: 40px;
+
                 }
 
                 .btn {
-                    width: 100%;
+                    width: 80%;
                     margin: 10px 0;
                 }
                 input[type="password"], input[type="email"] {
-                    border-radius: 10px;
+                    border-radius: 20px;
                     width: 100%;
                     margin: 10px 0;
                     background-color: #FFFFFF;
+                    padding: 10px 15px;
                 }
 
                 .btn-primary {
@@ -87,7 +97,7 @@
                 }
 
                 label {
-                    font-size: 14px;
+                    font-size: 20px;
                     font-family: 'Inter', sans-serif;
     font-weight: 200; /* 200 corresponde a Extra Light */
                 }
@@ -98,7 +108,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../index.php">
                 <img src="../assets/images/logoTicket.png" alt="" style="width: 200px;">
             </a>
             
@@ -132,7 +142,7 @@
     <h4 class="mt-4 text-center">CAMBIO DE CONTRASEÑA</h4>
     <div class="container text-center bg-form  mx-auto"  style="max-width: 60%">   
         <div class="p-3" >
-            <form action="procesar_cambio_contrasena.php" method="POST" id="formulario">
+            <form class="formm" action="procesar_cambio_contrasena.php" method="POST" id="formulario">
                 <div class="form-group mt-3">
                     <label for="correo">Correo electrónico</label>
                     <input type="email" class="form-control" id="correo" name="correo" required>

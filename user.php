@@ -57,6 +57,7 @@
             margin-bottom: 5px;
             font-family: 'Inter', sans-serif;
             font-weight: 200; /* 200 corresponde a Extra Light */
+
         }
 
         .bg-form {
@@ -118,7 +119,7 @@
             }
 
             label {
-                font-size: 14px;
+                font-size: 20px;
             }
             
         }

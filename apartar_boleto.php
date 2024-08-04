@@ -190,9 +190,42 @@ $stmt->close();
             background-color: transparent; /* No fondo */
         }
         .buttons button {
-            border-radius: 15px;
+            border-radius: 25px;
             width: 150px;
             height: 40px;
+        }
+        @media (max-width: 768px) {
+            .bus-img {
+            width: 100px;
+            margin-left:-270px;
+        }
+        .buttons button {
+            border-radius: 25px;
+            width: 380px;
+            height: 60px;
+        }.seat.selected {
+            background-color: #7f5a83;
+            color: white;
+            margin-left:300px;
+        }
+        .price
+         {  
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: start;
+            margin-top:-840px;
+            padding: 20px;
+            width:160px;
+         text-align:center;
+            margin-left: 250px;
+
+        }
+        
+        
+
+        
         }
     </style>
 </head>
@@ -220,19 +253,22 @@ $stmt->close();
                         ?>
                     </div>
 
-                    <div class="row text-center mt-2">
+                        <div class="row text-center mt-2">
                         <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
-                            <img src="assets/images/seleccionado.png" alt="Seleccionado" style="width: 40px; height: 40px; border-radius: 5px;">
+                            <img  src=" assets/images/seleccionado.png" alt="Seleccionado" style="width: 40px; height: 40px; border-radius: 5px;">
                             <p>Seleccionado</p>
                         </div>
-                        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                      
+                        <div class=" col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
                             <img src="assets/images/ocupado.png" alt="Ocupado" style="width: 40px; height: 40px; border-radius: 5px;">
                             <p>Ocupado</p>
-                        </div>
-                        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                        </div> 
+                     
+                  <div class=" col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
                             <img src="assets/images/disponible.png" alt="Disponible" style="width: 40px; height: 40px; border-radius: 5px;">
                             <p>Disponible</p>
-                        </div>
+                    </div>
+                        
                     </div>
                 </div>
             </div>
@@ -256,7 +292,7 @@ $stmt->close();
                             </form>
                         </div>
                         <button id="btn-cancelar" class="btn btn-danger btn-lg" onclick="window.location.href='index.php'">Cancelar</button>
-                        <div style="border-radius: 15px; color: white;" class="price" id="price">$0.00MX</div>
+                        <div style="border-radius: 15px; color: white; " class="price" id="price">$0.00MX</div>
                     </div>
                 </div>
             </div>

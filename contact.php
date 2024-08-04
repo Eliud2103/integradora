@@ -37,7 +37,7 @@
        
         .imagen{
             width: 290px;
-            margin-left:650px;
+            margin-left:990px;
             position: relative;
             display: flex;
 
@@ -72,20 +72,20 @@
     <?php include 'components/navbar.php'; ?>
     <div class="container">
         <h4 class="mt-3 text-center">CONTACTO</h4>
-        <div class="row bg-form p-3 mt-4">
+        <div class="row bg-form p-3 mt-5">
             <div class="col-8 mt-4">
                 <form>
                     <div class="form-group ">
                         <label for="nombre">Nombre</label>
-                        <input type="name" class="form-control" id="nombre" name="nombre" value="ADO" disabled>
+                        <input type="name" class="form-control" id="nombre" name="nombre" value="Autobuses Halcón División México" disabled>
                     </div>
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" value="Halcones@gmail.com" disabled>
+                        <input type="email" class="form-control" id="email" name="email" value="autobuseshalcon.dmo@gmail.com" disabled>
                     </div>
                     <div class="form-group">
                         <label for="address">Dirección</label>
-                        <input type="text" class="form-control" id="address" name="address" value="San Pablo Huixtepec" disabled>
+                        <input type="text" class="form-control" id="address" name="address" value="C. Valdivieso S/N B. San Antonio, San Pablo Huixtepec" disabled>
                     </div>
                 </form>
             </div>
