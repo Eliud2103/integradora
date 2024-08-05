@@ -107,7 +107,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../index.php">
                 <img src="../assets/images/logoTicket.png" alt="" style="width: 200px;">
             </a>
             
@@ -151,10 +151,11 @@
                     <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
                 </div>
                 <div class="form-group">
-                    <label for="contrasena">Contraseña</label>
-                    <input type="password" class="form-control" id="contrasena" name="contrasena" required
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-                           title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial.">
+                <label for="contrasena">Contraseña</label>
+<input type="password" class="form-control" id="contrasena" name="contrasena" required
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+       title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial.">
+
                 </div>
                 <button class="btn btn-primary mt-4" type="submit" name="registrarse">Registrarse</button>
             </form>

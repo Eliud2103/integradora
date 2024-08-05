@@ -132,10 +132,10 @@ $stmt->close();
         }
         .seat {
             position: relative;
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             display: inline-block;
-            margin: 5px;
+            margin: 10px;
         }
         .seat img {
             width: 100%;
@@ -245,10 +245,22 @@ $stmt->close();
                         for ($i = 0; $i < $numero_asientos; $i++) {
                             $estado = in_array($i + 1, $asientos_ocupados) ? 'occupied' : 'available';
                             $src = ($estado == 'occupied') ? 'assets/images/ocupado.png' : 'assets/images/disponible.png';
+                            
                             echo '<div class="seat ' . $estado . '" data-index="' . $i . '">';
                             echo '<img src="' . $src . '" alt="Asiento">';
                             echo '<div class="seat-number">' . ($i + 1) . '</div>';
                             echo '</div>';
+
+                            
+                            if($i == 10){
+                                echo '<br>';
+                                echo '<br>';
+                                echo '<br>';
+                                echo '<br>';
+                                echo '<br>';
+                            }
+
+                            
                         }
                         ?>
                     </div>

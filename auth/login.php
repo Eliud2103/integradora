@@ -164,11 +164,12 @@
                         <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
                     </div>
                     <div class="form-group">
-                        <label for="contrasena_nueva">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena" name="contrasena" required
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-                           title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial."
-                        >
+                        <label for="contrasena">Contraseña</label>
+<input type="password" class="form-control" id="contrasena" name="contrasena" 
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+       title="Debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial" 
+       required>
+
                     </div>
                     <p  class="texto_italic"><a  href="cambio_contrasena.php">¿Olvidaste tu contraseña?</a> </p> 
                     <button class="boton btn btn-primary" type="submit" name="iniciar_sesion">Iniciar sesión</button>

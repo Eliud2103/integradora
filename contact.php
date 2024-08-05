@@ -64,6 +64,73 @@
             background-color: #BBD5FD;
             color: black; /* Asegura que el texto siga siendo legible */
             opacity: 1; /* Remueve la opacidad reducida que algunos navegadores aplican */
+        } 
+        @media (max-width: 768px) {
+            .bg-form {
+                height: 560px;
+                padding: 0px;
+                margin-top: 10px;
+                max-width: 90%;
+                border-radius: 20px;
+                margin-left: 20px;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+
+            .user-icon-container {
+                display: none;
+            }
+
+            input[type="text"], input[type="email"], .btn {
+                width: 300px;
+                margin: 10px 0;
+                border-radius: 20px;
+                
+            }
+            input[type="text"], input[type="email"] {
+                border-radius: 20px;
+                width: 350px;
+                margin: 10px 0;
+                background-color: #FFFFFF;
+                padding: 16px;
+                margin-left:-20px;
+            }
+
+            .btn-primary, .btn-danger {
+                font-size: 16px;
+                border-radius: 15px;
+            }
+
+            label {
+                font-size: 20px;
+                white-space: nowrap; /* Evita que las palabras se dividan en varias líneas */
+                margin-top:-9px;
+                text-align:center;
+                margin-left:100px;
+                
+            }
+            .imagen{
+            width: 190px;
+            margin-left:-160px;
+            position: relative;
+            display: flex;
+
+        }
+        .logo{
+            position: absolute;
+            align-items: start;
+            margin-top: 365px;
+            margin-left: 5px;
+        }
+        .autobus{
+            position:absolute;
+            margin-top: 390px;
+            margin-left: 5px;
+        }
+        .nombre{
+           margin-left: 70px;
+        }
+            
         }
     </style>
     
@@ -76,11 +143,11 @@
             <div class="col-8 mt-4">
                 <form>
                     <div class="form-group ">
-                        <label for="nombre">Nombre</label>
-                        <input type="name" class="form-control" id="nombre" name="nombre" value="Autobuses Halcón División México" disabled>
+                        <label  for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="Autobuses Halcón División México" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo electrónico</label>
+                        <label class="nombre" for="email">Correo electrónico</label>
                         <input type="email" class="form-control" id="email" name="email" value="autobuseshalcon.dmo@gmail.com" disabled>
                     </div>
                     <div class="form-group">

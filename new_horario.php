@@ -109,4 +109,5 @@
     </script>
 
 </body>
+<?php include 'components/footer.php'; ?>
 </html>

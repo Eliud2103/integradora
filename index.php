@@ -52,7 +52,7 @@
                 border: none;
                 max-width: 500px;
                 height: 150px;
-                /*overflow: hidden;*/
+                overflow: hidden;
                 display: flex;
                 flex-direction: column;
                 border-radius: 15px;

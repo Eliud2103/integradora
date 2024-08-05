@@ -7,14 +7,14 @@
         exit;
     }
 
-    $origen = $_GET['origen'];
-    $destino = $_GET['destino'];
-    $fecha = $_GET['fecha'];
+     $origen = $_GET['origen'];
+     $destino = $_GET['destino'];
+     $fecha = $_GET['fecha'];
 
     $sql = "SELECT t.id_trayecto, t.origen, t.destino, t.fecha, h.hora_salida, h.hora_llegada
             FROM trayecto t
             JOIN horario h ON t.id_trayecto = h.id_trayecto
-            WHERE t.origen = ? AND t.destino = ? AND t.fecha = ?";
+            WHERE t.origen = ? AND t.destino = ? AND h.fecha_salida = ?";
     $stmt = $conection->prepare($sql);
     $stmt->bind_param("sss", $origen, $destino, $fecha);
     $stmt->execute();
