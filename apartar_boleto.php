@@ -102,217 +102,287 @@ $stmt->close();
 <head>
     <?php include 'components/head_meta.php'; ?>
     <style>
-         h4 {
+h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
 }
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .main-card {
-            background-color: #d6e1f7;
-            border-radius: 10px;
-            margin-top: 20px;
-            padding: 20px;
-        }
-        .bus-img {
-            width: 90%;
-            max-width: 200px;
-        }
-        .seat-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .seat-map {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .seat {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            display: inline-block;
-            margin: 10px;
-        }
-        .seat img {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        .seat.available {
-            background-color: #e1e1e1;
-        }
-        .seat.selected {
-            background-color: #7f5a83;
-            color: white;
-        }
-        .seat.selected .seat-number {
-            color: #ffffff; /* Cambia el color del número del asiento a blanco */
-        }
-        .seat.occupied {
-            background-color: #b0b0b0;
-            cursor: not-allowed;
-        }
-        .seat-number {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #000;
-            pointer-events: none;
-        }
-        .price,
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .price {
-            background-color: #bce5e5;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 1.2rem;
-        }
-        .btn-primary {
-            background-color: #465772;
-            color: white;
-        }
-        .btn-danger {
-            background-color: #B6357B;
-        }
-        .button-container {
-            padding: 20px;
-            border-radius: 10px;
-            background-color: transparent; /* No fondo */
-        }
-        .buttons button {
-            border-radius: 25px;
-            width: 150px;
-            height: 40px;
-        }
-        @media (max-width: 768px) {
-            .bus-img {
-            width: 100px;
-            margin-left:-270px;
-        }
-        .buttons button {
-            border-radius: 25px;
-            width: 380px;
-            height: 60px;
-        }.seat.selected {
-            background-color: #7f5a83;
-            color: white;
-            margin-left:300px;
-        }
-        .price
-         {  
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: start;
-            margin-top:-840px;
-            padding: 20px;
-            width:160px;
-         text-align:center;
-            margin-left: 250px;
+body {
+    font-family: Arial, sans-serif;
+}
+.main-card {
+    background-color: #d6e1f7;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+.bus-img {
+    width: 100%;
+    max-width: 200px;
+}
+.seat-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8px 0;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.seat {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 5px;
+}
+.seat img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin-left:-12px;
+   
+}
+.seat.available {
+    background-color: #e1e1e1;
+}
+.seat.selected {
+    background-color: #7f5a83;
+    color: white;
+}
+.seat.selected .seat-number {
+    color: #ffffff;
+}
+.seat.occupied {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+}
+.seat-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    pointer-events: none;
+}
+.price,
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.price {
+    
+    width: 200px;
+    height:60px;
+    margin-top:60px;
+    background-color: #bce5e5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+.btn-primary {
+    background-color: #465772;
+    color: white;
+}
+.btn-danger {
+    background-color: #B6357B;
+}
+.button-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+.buttons button {
+    border-radius: 25px;
+    width: 200px;
+    height: 40px;
+}
+.niños{
+    width: 40px;
+    position: absolute;
+    margin-left: 540px;
+    margin-top: 5px;
+}
+.volantito{
+    width: 30px;
+    position: absolute;
+    margin-right: 700px;
+    margin-top: 215px;
+}
+.opcion{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+   
+}
 
-        }
-        
-        
-
-        
-        }
+@media (max-width: 768px) {
+    .bus-img {
+        width: 100px;
+        margin-left: -270px;
+    }
+    .buttons button {
+        border-radius: 25px;
+        width: 380px;
+        height: 60px;
+    }
+    .seat.selected {
+        background-color: #7f5a83;
+        color: white;
+    }
+    .price {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        margin-top: -840px;
+        padding: 20px;
+        width: 160px;
+        text-align: center;
+        margin-left: 250px;
+    }
+    .seat-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8px 0;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.seat {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 5px;
+}
+.seat img {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin-left:-12px;
+   
+}
+}
     </style>
 </head>
 <body>
     <?php include 'components/navbar.php'; ?>
     <h3 class="text-center mt-3">APARTADO DE BOLETOS</h3>
     <div class="container main-card">
-        <div class="row">
-            <div class="col-md-2 text-center">
-                <img src="assets/images/autobus.png" alt="Autobús" class="bus-img">
-                <p class="mt-4">Autobús</p>
-            </div>
-            <div class="col-md-8">
-                <div class="seat-container">
-                    <div class="seat-map">
-                        <?php
-                        for ($i = 0; $i < $numero_asientos; $i++) {
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <img src="assets/images/autobus.png" alt="Autobús" class="bus-img">
+            <p class="mt-4">Autobús</p>
+        </div>
+        <div class="col-md-8">
+            <div class="seat-container">
+                <div class="seat-map">
+                    <?php
+                    $num_asientos_arriba = 20;
+                    $num_asientos_abajo = 24;
+                echo ' <img class="volantito" src="assets\images\volantito.png" alt="">';
+                    // Grupo de arriba con 20 asientos
+                    for ($fila = 0; $fila < 2; $fila++) {
+                        echo '<div class="row">';
+                        for ($col = 0; $col < 10; $col++) {
+                            $i = $fila * 10 + $col;
                             $estado = in_array($i + 1, $asientos_ocupados) ? 'occupied' : 'available';
                             $src = ($estado == 'occupied') ? 'assets/images/ocupado.png' : 'assets/images/disponible.png';
-                            
+
                             echo '<div class="seat ' . $estado . '" data-index="' . $i . '">';
                             echo '<img src="' . $src . '" alt="Asiento">';
-                            echo '<div class="seat-number">' . ($i + 1) . '</div>';
+                            echo '<div class="seat-number">' . str_pad($i + 1, 2, '0', STR_PAD_LEFT) . '</div>';
                             echo '</div>';
-
-                            
-                            if($i == 10){
-                                echo '<br>';
-                                echo '<br>';
-                                echo '<br>';
-                                echo '<br>';
-                                echo '<br>';
-                            }
-
-                            
                         }
-                        ?>
+                        echo '</div>';
+                        
+                    }
+                    echo '<img class="niños" src="assets\images\niños.png" alt="">';
+                    echo '<br>';
+                    // Grupo de abajo con 24 asientos
+                    for ($fila = 0; $fila < 2; $fila++) {
+                        echo '<div class="row">';
+                        for ($col = 0; $col < 12; $col++) {
+                            $i = $num_asientos_arriba + $fila * 12 + $col;
+                            $estado = in_array($i + 1, $asientos_ocupados) ? 'occupied' : 'available';
+                            $src = ($estado == 'occupied') ? 'assets/images/ocupado.png' : 'assets/images/disponible.png';
+
+                            echo '<div class="seat ' . $estado . '" data-index="' . $i . '">';
+                            echo '<img src="' . $src . '" alt="Asiento">';
+                            echo '<div class="seat-number">' . str_pad($i + 1, 2, '0', STR_PAD_LEFT) . '</div>';
+                            echo '</div>';
+                        }
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+
+                <div class="row text-center mt-2">
+                    <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                        <img class="opcion" src="assets/images/seleccionado.png" alt="Seleccionado" >
+                        <p>Seleccionado</p>
                     </div>
 
-                        <div class="row text-center mt-2">
-                        <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
-                            <img  src=" assets/images/seleccionado.png" alt="Seleccionado" style="width: 40px; height: 40px; border-radius: 5px;">
-                            <p>Seleccionado</p>
-                        </div>
-                      
-                        <div class=" col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
-                            <img src="assets/images/ocupado.png" alt="Ocupado" style="width: 40px; height: 40px; border-radius: 5px;">
-                            <p>Ocupado</p>
-                        </div> 
-                     
-                  <div class=" col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
-                            <img src="assets/images/disponible.png" alt="Disponible" style="width: 40px; height: 40px; border-radius: 5px;">
-                            <p>Disponible</p>
+                    <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                        <img class="opcion"  src="assets/images/ocupado.png" alt="Ocupado" >
+                        <p>Ocupado</p>
                     </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="button-container">
-                    <div class="buttons">
-                        <div id="bookingFormContainer" data-id-trayecto="<?php echo $id_trayecto; ?>">
-                            <form id="bookingForm" action="apartar_boleto.php" method="POST">
-                                <input type="hidden" name="codigo_apartado" id="codigo_apartado" value="">
-                                <input type="hidden" name="num_asiento" id="num_asiento" value="">
-                                <input type="hidden" name="estado_reserva" id="estado_reserva" value="ocupado">
-                                <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
-                                <input type="hidden" name="id_horario" id="id_horario" value="<?php echo $id_horario; ?>">
-                                <input type="hidden" name="id_trayecto" id="id_trayecto" value="<?php echo $id_trayecto; ?>">
-                                <input type="hidden" name="origen" id="origen" value="<?php echo $origen; ?>">
-                                <input type="hidden" name="destino" id="destino" value="<?php echo $destino; ?>">
-                                <input type="hidden" name="fecha" id="fecha" value="<?php echo $fecha; ?>">
-                                <input type="hidden" name="hora_salida" id="hora_salida" value="<?php echo $hora_salida; ?>">
-                                <input type="hidden" name="monto_pagar" id="monto_pagar" value="100">
-                                <button id="btn-apartar" class="btn btn-primary mb-3 btn-lg" type="submit">Apartar</button>
-                            </form>
-                        </div>
-                        <button id="btn-cancelar" class="btn btn-danger btn-lg" onclick="window.location.href='index.php'">Cancelar</button>
-                        <div style="border-radius: 15px; color: white; " class="price" id="price">$0.00MX</div>
+
+                    <div class="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                        <img class="opcion"  src="assets/images/disponible.png" alt="Disponible" >
+                        <p>Disponible</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-2">
+            <div class="button-container">
+                <div class="buttons">
+                    <div id="bookingFormContainer" data-id-trayecto="<?php echo $id_trayecto; ?>">
+                        <form id="bookingForm" action="apartar_boleto.php" method="POST">
+                            <input type="hidden" name="codigo_apartado" id="codigo_apartado" value="">
+                            <input type="hidden" name="num_asiento" id="num_asiento" value="">
+                            <input type="hidden" name="estado_reserva" id="estado_reserva" value="ocupado">
+                            <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
+                            <input type="hidden" name="id_horario" id="id_horario" value="<?php echo $id_horario; ?>">
+                            <input type="hidden" name="id_trayecto" id="id_trayecto" value="<?php echo $id_trayecto; ?>">
+                            <input type="hidden" name="origen" id="origen" value="<?php echo $origen; ?>">
+                            <input type="hidden" name="destino" id="destino" value="<?php echo $destino; ?>">
+                            <input type="hidden" name="fecha" id="fecha" value="<?php echo $fecha; ?>">
+                            <input type="hidden" name="hora_salida" id="hora_salida" value="<?php echo $hora_salida; ?>">
+                            <input type="hidden" name="monto_pagar" id="monto_pagar" value="100">
+                            <button id="btn-apartar" class="btn btn-primary mb-3 btn-lg" type="submit">Apartar</button>
+                        </form>
+                    </div>
+                    <button id="btn-cancelar" class="btn btn-danger btn-lg" onclick="window.location.href='index.php'">Cancelar</button>
+                    <div style="border-radius: 15px; color: white;" class="price" id="price">$0.00MX</div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
     <?php include 'components/footer.php'; ?>
     <script>
-        const seatPrice = 100;
+        const seatPrice = 520;
         const seats = document.querySelectorAll('.seat');
         let selectedSeats = [];
 
@@ -425,7 +495,7 @@ $stmt->close();
         });
 
         function updatePrice() {
-            const seatPrice = 100;
+            const seatPrice = 520;
             const totalPrice = selectedSeats.length * seatPrice;
             document.getElementById('price').textContent = `$${totalPrice.toFixed(2)}MX`;
             return totalPrice;

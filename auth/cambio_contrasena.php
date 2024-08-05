@@ -150,14 +150,15 @@
                 <div class="form-group">
                 <label for="contrasena_nueva">Nueva contraseña</label>
 <input type="password" class="form-control" id="contrasena_nueva" name="contrasena_nueva" 
-       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
-       title="Debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial" 
-       required>
+pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&_\-])[A-Za-z\d@$!%*?&_\-]{8,}"
+title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial."required>
 
                 </div>
                 <div class="form-group">
                     <label for="confirmar_contrasena">Confirma tu contraseña</label>
-                    <input type="password" class="form-control" id="confirmar_contrasena" name="confirmar_contrasena" required>
+                    <input type="password" class="form-control" id="confirmar_contrasena" name="confirmar_contrasena" required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&_\-])[A-Za-z\d@$!%*?&_\-]{8,}"
+                    title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial.">
                 </div>
                 <button class=" btn btn-primary mt-4" type="submit" name="cambiar_contrasena">
                     <span id="spinner" style="display: none;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>        

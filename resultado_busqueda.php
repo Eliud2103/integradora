@@ -152,7 +152,7 @@
                             </ul>
                         </div>
                         <div class=" col-6 col-md-2 col-lg-3 text-center bg-light  pt-4">
-                            <div class="price mt-2">$100 MXN</div>
+                            <div class="price mt-2">$520 MXN</div>
                         </div>
                         <div class="col-6 col-md-3 col-lg-1 text-right pt-2 background_button ">';
                     
