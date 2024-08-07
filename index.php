@@ -1,6 +1,8 @@
 <?php
     include 'conection/conection.php';
     session_start();
+
+    $is_admin = isset($_SESSION['admin_id']);
     
     $sql = "SELECT id, titulo, resumen, contenido, fecha, imagen FROM noticias ORDER BY fecha DESC";
     $result = $conection->query($sql);
@@ -30,149 +32,161 @@
     <head>
         <?php include 'components/head_meta.php'; ?>
         <style>
-               h4 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-}
+            h4 {
+                font-family: 'Inter', sans-serif;
+                font-weight: 800;
+            }
             .fondo {
                 background: url('assets/images/Fondo_inicio.jpg') no-repeat center center fixed;
                 background-size: cover;
-                opacity: 0.7;
                 height: 200px;
                 position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0.8;
             }
-
-            .bg-cards{
+            .bg-cards {
                 background-color: #C9D8F5;
                 border-radius: 20px;
+                padding: 20px;
+                margin-top: 20px;
+                height: 260px;
+               
             }
-
             .card-custom {
-                width: 380px;;
+                height: 60%;
+                width: 95%;
                 border: none;
-                max-width: 500px;
-                height: 150px;
-                overflow: hidden;
+                border-radius: 15px;
                 display: flex;
                 flex-direction: column;
-                border-radius: 15px;
+                overflow: hidden;
+                margin-bottom: 20px;
             }
-
             .card-custom img {
-                /*
-                
-                height: 70%;
-                width: 100%;*/
                 width: 100%;
                 height: auto;
                 object-fit: cover;
-                
-                
             }
-
             .card-custom .card-body {
                 height: 70%;
                 overflow-y: auto;
-               
+                padding: 15px;
             }
-            .select{
-                    margin-top: 90px;
-                    margin-left:30px;
-                }
-
+            .select {
+                
+                border-radius: 10px;
+                padding: 14px 10px;
+                border: 1px solid #ccc;
+                opacity: 0.9;
+                border: none;
+                margin: 20px;
+                margin-top: 50px;
+                margin-left: 180px;
+                width: 310px;;
+            }
+            .in {
+                margin-right: 400px;
+                margin: 10px 0;
+                padding: 14px;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+                border: none;
+                opacity: 0.9;
+            }
+            .boton_buscar {
+                margin-top: -5px;
+                border-radius: 20px;
+                padding: 10px 20px;
+                opacity: 0.9;
+            }
             @media (max-width: 768px) {
-                .bg-cards{
-                    width: 400px;
-                    margin-bottom: 50px;
-                }
-               
-                .formm {
-                    text-align:center;
-                }
-                
-                
-                
-                .fondo{
-                    height: 400px;
-                }
-
-                .card-custom {
-                    flex-direction: row;
-                    max-height: 300px;
-                    
-                  
-                }
-
-                .card-custom .col-md-7, .card-custom .col-md-5 {
-                    flex: 1;
-                    max-width: 50%;
-                    
-                }
-
-                .card-custom img {
-                    width: 100%;
-                    height: auto;
-                    object-fit: cover;
-                }
-
-                .card-body {
-                    padding: 5px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-
-                .card-body h5, .card-body p {
-                    margin: 0;
-
-                }
-                .imgg{
-                    width: auto;
-                }
-                .select{
-                    margin-top: 10px;
-                    margin-left:30px;
-                }
-              .in{
-                margin-bottom: 50px;
-              }
-              
-               
-               
-            }
-         
+    .bg-cards {
+        margin-bottom: 60px;
+        margin-top: 20px;
+        padding: 10px;
+        width: 90%;
+        height: auto;
+    }
+    .card-custom {
+        margin-left:10px;
+        flex-direction: row; /* Cambia la dirección de la flexbox a fila */
+        align-items: center; /* Alinea los elementos en el centro verticalmente */
+    }
+    .card-custom img {
+        order: 2; /* Cambia el orden para que la imagen aparezca después del texto */
+        margin-left: 0;
+        width: 50%;
+        height: auto;
+    }
+    .card-body {
+        
+        order: 1; /* Cambia el orden para que el texto aparezca antes de la imagen */
+        padding: 10px;
+        width: 100%;
+    }
+    .fondo {
+        height: 400px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    .formm {
+        text-align: center;
+        width: 100%;
+        margin-top: 40px;
+    }
+    .select, .in {
+        border-radius: 20px;
+        margin-top: 40px;
+        width: 80%;
+        margin: 5px auto;
+    }
+    .boton_buscar {
+        margin-top: 30px;
+        width: 40%;
+    }
+}
 
         </style>
     </head>
     <body>
-        
         <?php include 'components/navbar.php'; ?>
         <div class="fondo">
-            <form class="formm" action="procesar_trayecto.php" method="POST">
-                <select class="select mt-5 mb-3" id="origen" name="origen">
-                    <?php if ($result_origen->num_rows > 0): ?>
-                        <?php while($row = $result_origen->fetch_assoc()): ?>
+            <form class="formm" action="<?php echo $is_admin ? 'admin_r_b.php' : 'resultado_busqueda.php'; ?>" method="GET">
+                <select class="select" id="origen" name="origen">
+                    <?php
+                    if ($result_origen->num_rows > 0): 
+                        while($row = $result_origen->fetch_assoc()): 
+                    ?>
                             <option value="<?php echo htmlspecialchars($row['origen']); ?>">
                                 <?php echo htmlspecialchars($row['origen']); ?>
                             </option>
-                        <?php endwhile; ?>
-                    <?php else: ?>
+                    <?php 
+                        endwhile; 
+                    else: 
+                    ?>
                         <option>No hay orígenes disponibles</option>
                     <?php endif; ?>
                 </select>
-                <select class="select mb-3" id="destino" name="destino">
-                    <?php if ($result_destino->num_rows > 0): ?>
-                        <?php while($row = $result_destino->fetch_assoc()): ?>
+                <select class="select" id="destino" name="destino">
+                    <?php
+                    if ($result_destino->num_rows > 0): 
+                        while($row = $result_destino->fetch_assoc()): 
+                    ?>
                             <option value="<?php echo htmlspecialchars($row['destino']); ?>">
                                 <?php echo htmlspecialchars($row['destino']); ?>
                             </option>
-                        <?php endwhile; ?>
-                    <?php else: ?>
+                    <?php 
+                        endwhile; 
+                    else: 
+                    ?>
                         <option>No hay destinos disponibles</option>
                     <?php endif; ?>
                 </select>
                 <input class="in" type="text" id="fecha" name="fecha" placeholder="Fecha" required>
-                <button style="border-radius: 20px; width:120px;  " type="submit" class="btn btn-light btn-lg mx-4   boton_buscar">Buscar</button>
+                <button type="submit" class="btn btn-light btn-lg mx-4 boton_buscar">Buscar</button>
             </form>
         </div>
         <h4 class="mt-4 text-center mb-3">DESTACADO</h4>
@@ -188,13 +202,13 @@
                             <a href="noticia.php?id=<?php echo $item['id']; ?>" class="text-decoration-none text-dark"> 
                                 <div class="card mb-4 mt-4 card-custom p-3">
                                     <div class="row g-0">
-                                        <div  class="col-12 col-md-7">
-                                            <div  class="card-body">
+                                        <div class="col-12 col-md-7">
+                                            <div class="card-body">
                                                 <h5 class="fw-bold"><?php echo htmlspecialchars($item['titulo']); ?></h5>
-                                                <p class="" style="font-size: 15px;"><?php echo htmlspecialchars($item['resumen']); ?></p>
+                                                <p style="font-size: 15px;"><?php echo htmlspecialchars($item['resumen']); ?></p>
                                             </div>
                                         </div>
-                                        <div class=" col-12 col-md-5">
+                                        <div class="col-12 col-md-5">
                                             <img src="/<?php echo htmlspecialchars($item['imagen']); ?>" class="img-fluid rounded" alt="Imagen">
                                         </div>
                                     </div>
@@ -205,18 +219,13 @@
                 <?php endforeach; ?>
             </div>
         </div>
-
     </body>
     <?php include 'components/footer.php'; ?>
-
     <script>
-    // Asegurarte de que el documento esté listo antes de aplicar el datepicker
-    $(document).ready(function(){
-        $("#fecha").datepicker({
-            dateFormat: "yy-mm-dd" // Formato de la fecha
+        $(document).ready(function() {
+            $("#fecha").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
         });
-    });
     </script>
-
-
 </html>

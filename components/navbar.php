@@ -1,6 +1,8 @@
-
-
-
+<?php
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                ?>
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
@@ -20,17 +22,10 @@
                 <li class="nav-item mx-3">
                     <a class="nav-link" href="contact.php" style="color: white;">CONTACTO</a>
                 </li>
-                <?php
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
-                ?>
-                <div class="fondito">
-                <a class="mx-3" href="<?php echo isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'; ?>">
-                    <img  style="width: 45px;" src="assets/images/user.png" alt="Perfil del usuario">
+              
+                <a class="mx-3" href="<?php echo isset($_SESSION['admin_id']) ? 'admin_profile.php' : (isset($_SESSION['user_id']) ? 'user.php' : 'auth/login.php'); ?>">
+                    <img style="width: 45px;" src="assets/images/user.png" alt="Perfil del usuario">
                 </a>
-                </div>
-                
             </ul>
         </div>
     </div>

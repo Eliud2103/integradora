@@ -2,22 +2,22 @@
 session_start();
 include 'conection/conection.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: auth/login.php");
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: auth/login_admin.php");
     exit;
 }
 
-// Preparar y ejecutar la consulta para obtener los datos del usuario
-$stmt = $conection->prepare("SELECT nombre_usuario, correo_electronico FROM usuarios WHERE id_usuario = ?");
-$stmt->bind_param("i", $_SESSION['user_id']);
+// Preparar y ejecutar la consulta para obtener los datos del administrador
+$stmt = $conection->prepare("SELECT nombre_usuario, correo_electronico FROM admins WHERE id = ?");
+$stmt->bind_param("i", $_SESSION['admin_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+    $admin = $result->fetch_assoc();
 } else {
     echo "<script>
-            alert('No se encontraron datos del usuario.');
+            alert('No se encontraron datos del administrador.');
             window.location.href = 'index.php';
           </script>";
     exit;
@@ -55,7 +55,7 @@ if ($result->num_rows > 0) {
             display: block;
             margin-bottom: 5px;
             font-family: 'Inter', sans-serif;
-            font-weight: 200; /* 200 corresponde a Extra Light */
+            font-weight: 200;
         }
 
         .bg-form {
@@ -68,11 +68,11 @@ if ($result->num_rows > 0) {
 
         .btn-primary {
             background-color: #6DA0ED;
-            border-radius: 20px
+            border-radius: 20px;
         }
         .btn-danger {
             background-color: #B6357B;
-            border-radius: 20px
+            border-radius: 20px;
         }
 
         .user-icon-container {
@@ -114,32 +114,10 @@ if ($result->num_rows > 0) {
             .btn-primary, .btn-danger {
                 font-size: 16px;
                 border-radius: 15px;
-                width: 80%;
             }
 
             label {
                 font-size: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            input[type="text"], input[type="email"], .btn {
-                width: 90%;
-                margin: 10px auto;
-            }
-
-            label {
-                font-size: 18px;
-            }
-        }
-
-        @media (min-width: 992px) {
-            input[type="text"], input[type="email"], .btn {
-                width: 70%;
-            }
-
-            .bg-form {
-                max-width: 600px;
             }
         }
     </style>
@@ -156,11 +134,11 @@ if ($result->num_rows > 0) {
                     </div>
                     <div class="form-group">
                         <label for="nombre_usuario">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($user['nombre_usuario']); ?>" readonly required>
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($admin['nombre_usuario']); ?>" readonly required>
                     </div>
                     <div class="form-group">
                         <label for="correo_electronico">Correo electrónico</label>
-                        <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo htmlspecialchars($user['correo_electronico']); ?>" readonly required>
+                        <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo htmlspecialchars($admin['correo_electronico']); ?>" readonly required>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-6">

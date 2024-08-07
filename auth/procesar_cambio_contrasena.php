@@ -1,39 +1,53 @@
 <?php
-    include '../conection/conection.php';
-    
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $correo = $_POST['correo'];
-        $contrasena_nueva = $_POST['contrasena_nueva'];
-        $confirmar_contrasena = $_POST['confirmar_contrasena'];
+session_start();
+include '../conection/conection.php';
+
+function limpiarDatos($dato) {
+    global $conection;
+    $dato = trim($dato);
+    $dato = stripslashes($dato);
+    $dato = htmlspecialchars($dato);
+    return $conection->real_escape_string($dato);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['correo']) && isset($_POST['contrasena_nueva']) && isset($_POST['confirmar_contrasena'])) {
+        $correo = limpiarDatos($_POST['correo']);
+        $contrasena_nueva = limpiarDatos($_POST['contrasena_nueva']);
+        $confirmar_contrasena = limpiarDatos($_POST['confirmar_contrasena']);
+        $tipo_usuario = limpiarDatos($_POST['tipo_usuario']);
 
         if ($contrasena_nueva !== $confirmar_contrasena) {
-            echo "Error: Las contraseñas no coinciden. Intenta de nuevo.";
-            exit();
+            echo "Error: Las contraseñas no coinciden.";
+            exit;
         }
-        $stmt = $conection->prepare("SELECT * FROM usuarios WHERE correo_electronico = ?");
-        $stmt->bind_param("s", $correo);
-        $stmt->execute();
-        $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            $hashed_password = password_hash($contrasena_nueva, PASSWORD_DEFAULT);
+        $contrasena_hash = password_hash($contrasena_nueva, PASSWORD_DEFAULT);
 
-            $update_stmt = $conection->prepare("UPDATE usuarios SET contrasena = ? WHERE correo_electronico = ?");
-            $update_stmt->bind_param("ss", $hashed_password, $correo);
+        if ($tipo_usuario === 'admin') {
+            $sql = "UPDATE admins SET contrasena = ? WHERE correo_electronico = ?";
+        } else {
+            $sql = "UPDATE usuarios SET contrasena = ? WHERE correo_electronico = ?";
+        }
 
-            if ($update_stmt->execute()) {
+        $stmt = $conection->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param("ss", $contrasena_hash, $correo);
+            if ($stmt->execute()) {
                 echo "Contraseña actualizada correctamente.";
             } else {
-                echo "Error: al actualizar la contraseña: " . $conection->error;
+                echo "Error: No se pudo actualizar la contraseña.";
             }
+            $stmt->close();
         } else {
-            echo "Error: Correo electrónico no encontrado en la base de datos.";
+            echo "Error: No se pudo preparar la consulta.";
         }
-
-        $stmt->close();
-        $update_stmt->close();
-        $conection->close();
     } else {
-        echo "Acceso denegado.";
+        echo "Error: Faltan datos requeridos.";
     }
+} else {
+    echo "Error: Solicitud no válida.";
+}
+
+$conection->close();
 ?>
