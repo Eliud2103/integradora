@@ -74,23 +74,24 @@
                 overflow-y: auto;
                 padding: 15px;
             }
+            
             .select {
                 
-                border-radius: 10px;
+                border-radius: 20px;
                 padding: 14px 10px;
                 border: 1px solid #ccc;
                 opacity: 0.9;
                 border: none;
                 margin: 20px;
                 margin-top: 50px;
-                margin-left: 180px;
+                margin-left: 40px;
                 width: 310px;;
             }
             .in {
-                margin-right: 400px;
+                margin-left: 40px;
                 margin: 10px 0;
                 padding: 14px;
-                border-radius: 10px;
+                border-radius: 20px;
                 border: 1px solid #ccc;
                 border: none;
                 opacity: 0.9;
@@ -100,13 +101,15 @@
                 border-radius: 20px;
                 padding: 10px 20px;
                 opacity: 0.9;
+                margin-left: 210px;
             }
+           
             @media (max-width: 768px) {
     .bg-cards {
-        margin-bottom: 60px;
+        margin-bottom: 70px;
         margin-top: 20px;
         padding: 10px;
-        width: 90%;
+        width: 80%;
         height: auto;
     }
     .card-custom {
@@ -155,7 +158,7 @@
         <?php include 'components/navbar.php'; ?>
         <div class="fondo">
             <form class="formm" action="<?php echo $is_admin ? 'admin_r_b.php' : 'resultado_busqueda.php'; ?>" method="GET">
-                <select class="select" id="origen" name="origen">
+                <select style="margin-left: -200px;" class="select" id="origen" name="origen">
                     <?php
                     if ($result_origen->num_rows > 0): 
                         while($row = $result_origen->fetch_assoc()): 
@@ -185,8 +188,8 @@
                         <option>No hay destinos disponibles</option>
                     <?php endif; ?>
                 </select>
-                <input class="in" type="text" id="fecha" name="fecha" placeholder="Fecha" required>
-                <button type="submit" class="btn btn-light btn-lg mx-4 boton_buscar">Buscar</button>
+                <input style="margin-left: 60px;" class="in" type="text" id="fecha" name="fecha" placeholder="Fecha" required>
+                <button  type="submit" class="btn btn-light btn-lg mx-4 boton_buscar">Buscar</button>
             </form>
         </div>
         <h4 class="mt-4 text-center mb-3">DESTACADO</h4>
